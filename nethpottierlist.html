@@ -147,7 +147,7 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      fetch('players')
+      fetch('players.json')
         .then(response => response.json())
         .then(players => {
           const tierBoxes = {

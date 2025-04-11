@@ -221,17 +221,6 @@
       width: 250px;
     }
 
-    .HT1 { color: red; }
-    .LT1 { color: rgb(255, 136, 0); }
-    .HT2 { color: rgb(255, 217, 0); }
-    .LT2 { color: rgb(123, 255, 0); }
-    .HT3 { color: rgb(0, 255, 98); }
-    .LT3 { color: rgb(0, 255, 213); }
-    .HT4 { color: rgb(0, 68, 255); }
-    .LT4 { color: rgb(89, 0, 255); }
-    .HT5 { color: rgb(225, 0, 255); }
-    .LT5 { color: rgb(114, 0, 76); }
-
   </style>
 </head>
 <body>
@@ -367,7 +356,7 @@
               kitsUsed.add(kit);
   
               let tierDiv = document.createElement('div');
-              tierDiv.classList.add('tier');
+              tierDiv.classList.add('tier', tier.tier);
   
               let tooltip = document.createElement('div');
               tooltip.classList.add('tooltip');

@@ -255,6 +255,14 @@
       RHT5: 2, RLT5: 1,
     };
   
+    const iconURLs = {
+      sword: 'https://mctiers.com/tier_icons/sword.svg',
+      axe: 'https://swarp3ed.github.io/YugoTiers/icons/axe.svg',
+      bow: 'https://swarp3ed.github.io/YugoTiers/icons/bow.svg',
+      shield: 'https://swarp3ed.github.io/YugoTiers/icons/shield.svg',
+      // Add more kits and their corresponding icon URLs here
+    };
+  
     let topPlayers = [];  // Store the top 10 players
   
     // Fetch player data and handle sorting, storing top 10
@@ -317,18 +325,18 @@
   
             playerName.textContent = player.name;
             leftSide.appendChild(playerName);
-
+  
             player.tiers.sort((a, b) => {
-            const tierOrder = {
-              'HT1': 1, 'LT1': 2, 'HT2': 3, 'LT2': 4,
-              'HT3': 5, 'LT3': 6, 'HT4': 7, 'LT4': 8,
-              'HT5': 9, 'LT5': 10
-            };
-            const isRetired = (tier) => tier.startsWith("RLT") || tier.startsWith("RHT");
-            if (isRetired(a.tier) && !isRetired(b.tier)) return 1;
-            if (!isRetired(a.tier) && isRetired(b.tier)) return -1;
-            return (tierOrder[a.tier] || 999) - (tierOrder[b.tier] || 999);
-          });
+              const tierOrder = {
+                'HT1': 1, 'LT1': 2, 'HT2': 3, 'LT2': 4,
+                'HT3': 5, 'LT3': 6, 'HT4': 7, 'LT4': 8,
+                'HT5': 9, 'LT5': 10
+              };
+              const isRetired = (tier) => tier.startsWith("RLT") || tier.startsWith("RHT");
+              if (isRetired(a.tier) && !isRetired(b.tier)) return 1;
+              if (!isRetired(a.tier) && isRetired(b.tier)) return -1;
+              return (tierOrder[a.tier] || 999) - (tierOrder[b.tier] || 999);
+            });
   
             let totalPoints = 0;
             let kitsUsed = new Set();
@@ -356,17 +364,13 @@
               tooltip.textContent = `${peak ? "Peak Tier" : "Current Tier"}: ${usedTier} — ${points} bodova`;
               tierDiv.appendChild(tooltip);
   
+              // Use the icon URL based on the kit
               let icon = document.createElement('img');
-              icon.src = `/icons/${kit}.svg`;
-              icon.alt = kit;
+              icon.src = iconURLs[kit] || ''; // Fallback to empty string if kit not found
+              icon.alt = `${kit} icon`; // Set alt text based on kit
               tierDiv.appendChild(icon);
   
               let tierText = document.createElement('span');
-              if (current.startsWith('RLT') || current.startsWith('RHT')) {
-                tierText.classList.add('retired');
-              } else {
-                tierText.classList.add(current);
-              }
               tierText.textContent = current;
               tierDiv.appendChild(tierText);
   
@@ -394,7 +398,7 @@
         const searchBar = document.getElementById('search-bar');
         searchBar.addEventListener('input', () => {
           const searchQuery = searchBar.value.toLowerCase();
-          
+  
           if (searchQuery === '') {
             // If search bar is empty, show top 10 players
             renderPlayers(topPlayers);

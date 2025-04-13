@@ -272,10 +272,12 @@
     let topPlayers = [];  // Store the top 10 players
   
     // Fetch player data and handle sorting, storing top 10
-    fetch('https://sWarped.mysite.repl.co/players.json') // Replace with your Replit URL
-  .then(response => response.json())
-  .then(players => {
-    const playerList = document.getElementById('player-list');
+    fetch("https://minecraft-tierlist-bot.sWarped.repl.co/players")
+    .then(response => response.json())
+    .then(data => {
+      const players = data;
+      const topPlayers = players.slice(0, 10); // Adjust sorting if needed
+      const playerList = document.getElementById('player-list');
   
     // Sort players based on their total points (highest first)
     players.sort((a, b) => {

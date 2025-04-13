@@ -155,9 +155,9 @@
         { "tier": "HT3", "kit": "SMP" },
         { "tier": "LT3", "kit": "UHC" },
         { "tier": "LT3", "kit": "SERB" },
-        { "tier": "LT3", "kit": "SWORD"},
+        { "tier": "HT3", "kit": "SWORD"},
         { "tier": "LT3", "kit": "AXE" },
-        { "tier": "HT4", "kit": "MACE" },
+        { "tier": "LT3", "kit": "MACE" },
         { "tier": "LT3", "kit": "NETHPOT" },
         { "tier": "LT3", "kit": "DIAMONDPOT" },
         { "tier": "HT5", "kit": "CRYSTALS" }

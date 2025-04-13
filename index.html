@@ -272,7 +272,7 @@
     let topPlayers = [];  // Store the top 10 players
   
     // Fetch player data and handle sorting, storing top 10
-    fetch('https://replit.com/@sWarped/minecraft-tierlist-bot#players.json') // Replace with your Replit URL
+    fetch('https://sWarped.repl.co/players.json') // Replace with your Replit URL
   .then(response => response.json())
   .then(players => {
     const playerList = document.getElementById('player-list');

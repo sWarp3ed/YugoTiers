@@ -272,7 +272,7 @@
     let topPlayers = [];  // Store the top 10 players
   
     // Fetch player data and handle sorting, storing top 10
-    fetch("https://minecraft-tierlist-bot.@sWarped.repl.co/players")
+    fetch("players.json")
     .then(response => response.json())
     .then(data => {
       const players = data;
@@ -371,11 +371,10 @@
   
           tooltip.textContent = `${peak ? "Peak Tier" : "Current Tier"}: ${usedTier} — ${points} bodova`;
           tierDiv.appendChild(tooltip);
-  
-          // Use the icon URL based on the kit
+
           let icon = document.createElement('img');
-          icon.src = iconURLs[kit] || ''; // Fallback to empty string if kit not found
-          icon.alt = `${kit} icon`; // Set alt text based on kit
+          icon.src = iconURLs[kit] || ''; 
+          icon.alt = `${kit} icon`; t
           tierDiv.appendChild(icon);
   
           let tierText = document.createElement('span');

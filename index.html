@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -220,7 +219,7 @@
     #search-bar:focus {
       width: 250px;
     }
-
+    
   </style>
 </head>
 <body>
@@ -255,10 +254,24 @@
       RHT5: 2, RLT5: 1,
     };
   
+    const iconURLs = {
+      SWORD: 'https://mctiers.com/tier_icons/sword.svg',
+      AXE: 'https://mctiers.com/tier_icons/axe.svg',
+      MACE: 'https://mctiers.com/tier_icons/mace.svg',
+      SERB: 'file:///C:/Users/User/Desktop/minecraft-tierlist/public/icons/SERB.svg',
+      CRYSTALS: 'https://mctiers.com/tier_icons/vanilla.svg',
+      NETHPOT: 'https://mctiers.com/tier_icons/nethop.svg',
+      DIAMONDPOT: 'https://mctiers.com/tier_icons/pot.svg',
+      UHC: 'https://mctiers.com/tier_icons/uhc.svg',
+      SMP: 'https://mctiers.com/tier_icons/smp.svg',
+
+      // Add more kits and their corresponding icon URLs here
+    };
+  
     let topPlayers = [];  // Store the top 10 players
   
     // Fetch player data and handle sorting, storing top 10
-    fetch('/players')
+    fetch('players.json')
       .then(response => response.json())
       .then(players => {
         const playerList = document.getElementById('player-list');
@@ -318,6 +331,18 @@
             playerName.textContent = player.name;
             leftSide.appendChild(playerName);
   
+            player.tiers.sort((a, b) => {
+              const tierOrder = {
+                'HT1': 1, 'LT1': 2, 'HT2': 3, 'LT2': 4,
+                'HT3': 5, 'LT3': 6, 'HT4': 7, 'LT4': 8,
+                'HT5': 9, 'LT5': 10
+              };
+              const isRetired = (tier) => tier.startsWith("RLT") || tier.startsWith("RHT");
+              if (isRetired(a.tier) && !isRetired(b.tier)) return 1;
+              if (!isRetired(a.tier) && isRetired(b.tier)) return -1;
+              return (tierOrder[a.tier] || 999) - (tierOrder[b.tier] || 999);
+            });
+  
             let totalPoints = 0;
             let kitsUsed = new Set();
   
@@ -341,20 +366,16 @@
               const points = tierPoints[usedTier] || 0;
               totalPoints += points;
   
-              tooltip.textContent = `${peak ? "Peak Tier" : "Current Tier"}: ${usedTier} — ${points} bodova`;
+              tooltip.textContent = ${peak ? "Peak Tier" : "Current Tier"}: ${usedTier} — ${points} bodova;
               tierDiv.appendChild(tooltip);
   
+              // Use the icon URL based on the kit
               let icon = document.createElement('img');
-              icon.src = `/icons/${kit}.svg`;
-              icon.alt = kit;
+              icon.src = iconURLs[kit] || ''; // Fallback to empty string if kit not found
+              icon.alt = ${kit} icon; // Set alt text based on kit
               tierDiv.appendChild(icon);
   
               let tierText = document.createElement('span');
-              if (current.startsWith('RLT') || current.startsWith('RHT')) {
-                tierText.classList.add('retired');
-              } else {
-                tierText.classList.add(current);
-              }
               tierText.textContent = current;
               tierDiv.appendChild(tierText);
   
@@ -363,14 +384,14 @@
   
             let playerInfo = document.createElement('div');
             playerInfo.classList.add('info');
-            playerInfo.innerHTML = `Mjesto: #${player.placement || 'N/A'}<br>Bodovi: ${totalPoints}`;
+            playerInfo.innerHTML = Mjesto: #${player.placement || 'N/A'}<br>Bodovi: ${totalPoints};
             leftSide.appendChild(playerInfo);
   
             playerBox.appendChild(leftSide);
             playerBox.appendChild(rightSide);
             playerDiv.appendChild(playerBox);
   
-            playerDiv.href = `/player/${player.name.toLowerCase().replace(/\s+/g, '-')}`;
+            playerDiv.href = /player/${player.name.toLowerCase().replace(/\s+/g, '-')};
             playerList.appendChild(playerDiv);
           });
         };
@@ -382,7 +403,7 @@
         const searchBar = document.getElementById('search-bar');
         searchBar.addEventListener('input', () => {
           const searchQuery = searchBar.value.toLowerCase();
-          
+  
           if (searchQuery === '') {
             // If search bar is empty, show top 10 players
             renderPlayers(topPlayers);

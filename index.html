@@ -255,16 +255,10 @@
     };
   
     const iconURLs = {
-      SWORD: 'https://mctiers.com/tier_icons/sword.svg',
-      AXE: 'https://mctiers.com/tier_icons/axe.svg',
-      MACE: 'https://mctiers.com/tier_icons/mace.svg',
-      SERB: 'file:///C:/Users/User/Desktop/minecraft-tierlist/public/icons/SERB.svg',
-      CRYSTALS: 'https://mctiers.com/tier_icons/vanilla.svg',
-      NETHPOT: 'https://mctiers.com/tier_icons/nethop.svg',
-      DIAMONDPOT: 'https://mctiers.com/tier_icons/pot.svg',
-      UHC: 'https://mctiers.com/tier_icons/uhc.svg',
-      SMP: 'https://mctiers.com/tier_icons/smp.svg',
-
+      sword: 'https://swarp3ed.github.io/YugoTiers/icons/sword.svg',
+      axe: 'https://swarp3ed.github.io/YugoTiers/icons/axe.svg',
+      bow: 'https://swarp3ed.github.io/YugoTiers/icons/bow.svg',
+      shield: 'https://swarp3ed.github.io/YugoTiers/icons/shield.svg',
       // Add more kits and their corresponding icon URLs here
     };
   
@@ -366,13 +360,13 @@
               const points = tierPoints[usedTier] || 0;
               totalPoints += points;
   
-              tooltip.textContent = ${peak ? "Peak Tier" : "Current Tier"}: ${usedTier} — ${points} bodova;
+              tooltip.textContent = `${peak ? "Peak Tier" : "Current Tier"}: ${usedTier} — ${points} bodova`;
               tierDiv.appendChild(tooltip);
   
               // Use the icon URL based on the kit
               let icon = document.createElement('img');
               icon.src = iconURLs[kit] || ''; // Fallback to empty string if kit not found
-              icon.alt = ${kit} icon; // Set alt text based on kit
+              icon.alt = `${kit} icon`; // Set alt text based on kit
               tierDiv.appendChild(icon);
   
               let tierText = document.createElement('span');
@@ -384,14 +378,14 @@
   
             let playerInfo = document.createElement('div');
             playerInfo.classList.add('info');
-            playerInfo.innerHTML = Mjesto: #${player.placement || 'N/A'}<br>Bodovi: ${totalPoints};
+            playerInfo.innerHTML = `Mjesto: #${player.placement || 'N/A'}<br>Bodovi: ${totalPoints}`;
             leftSide.appendChild(playerInfo);
   
             playerBox.appendChild(leftSide);
             playerBox.appendChild(rightSide);
             playerDiv.appendChild(playerBox);
   
-            playerDiv.href = /player/${player.name.toLowerCase().replace(/\s+/g, '-')};
+            playerDiv.href = `/player/${player.name.toLowerCase().replace(/\s+/g, '-')}`;
             playerList.appendChild(playerDiv);
           });
         };

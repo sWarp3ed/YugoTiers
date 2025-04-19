@@ -192,15 +192,6 @@
       ]
     },
     {
-      "name": "emabanboss",
-      "tiers": [
-        { "tier": "LT4", "kit": "SWORD"},
-        { "tier": "LT4", "kit": "MACE" },
-        { "tier": "HT4", "kit": "NETHPOT" },
-        { "tier": "LT3", "kit": "CRYSTALS" }
-      ]
-    },
-    {
       "name": "StefanSinn",
       "tiers": [
         { "tier": "HT4", "kit": "NETHPOT" },

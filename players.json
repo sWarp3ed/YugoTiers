@@ -304,7 +304,7 @@
         { "tier": "LT3", "kit": "SMP", "peakTier":"HT3" },
         { "tier": "HT4", "kit": "UHC", "peakTier":"LT3" },
         { "tier": "LT3", "kit": "SERB" },
-        { "tier": "HT4", "kit": "SWORD",, "peakTier":"HT3" },
+        { "tier": "HT4", "kit": "SWORD", "peakTier":"HT3" },
         { "tier": "HT4", "kit": "AXE" },
         { "tier": "LT3", "kit": "MACE" },
         { "tier": "HT4", "kit": "NETHPOT" },

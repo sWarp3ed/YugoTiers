@@ -187,7 +187,7 @@
         { "tier": "LT3", "kit": "SWORD", "peakTier": "HT3"},
         { "tier": "HT4", "kit": "MACE" },
         { "tier": "LT3", "kit": "NETHPOT" },
-        { "tier": "LT3", "kit": "DIAMONDPOT" },
+        { "tier": "HT3", "kit": "DIAMONDPOT" },
         { "tier": "LT3", "kit": "CRYSTALS", "peakTier": "HT3" }
       ]
     },

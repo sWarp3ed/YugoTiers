@@ -344,31 +344,26 @@
       ]
     },
     {
-      "name": "",
+      "name": "BLuD_010",
       "tiers": [
-        { "tier": "", "kit": "SMP" },
-        { "tier": "", "kit": "UHC" },
-        { "tier": "", "kit": "SERB" },
-        { "tier": "", "kit": "SWORD"},
-        { "tier": "", "kit": "AXE" },
-        { "tier": "", "kit": "MACE" },
-        { "tier": "", "kit": "NETHPOT" },
-        { "tier": "", "kit": "DIAMONDPOT" },
-        { "tier": "", "kit": "CRYSTALS" }
+        { "tier": "LT3", "kit": "SMP" },
+        { "tier": "HT4", "kit": "UHC" },
+        { "tier": "LT4", "kit": "SERB" },
+        { "tier": "HT4", "kit": "SWORD","peakTier":"HT3"},
+        { "tier": "HT5", "kit": "AXE","peakTier":"LT4" },
+        { "tier": "LT4", "kit": "NETHPOT","peakTier":"HT4" },
+        { "tier": "LT4", "kit": "DIAMONDPOT","peakTier":"HT4" },
+        { "tier": "HT4", "kit": "CRYSTALS","peakTier":"LT3" }
       ]
     },
     {
-      "name": "",
+      "name": "__ogisa_",
       "tiers": [
-        { "tier": "", "kit": "SMP" },
-        { "tier": "", "kit": "UHC" },
-        { "tier": "", "kit": "SERB" },
-        { "tier": "", "kit": "SWORD"},
-        { "tier": "", "kit": "AXE" },
-        { "tier": "", "kit": "MACE" },
-        { "tier": "", "kit": "NETHPOT" },
-        { "tier": "", "kit": "DIAMONDPOT" },
-        { "tier": "", "kit": "CRYSTALS" }
+        { "tier": "HT5", "kit": "SERB" },
+        { "tier": "HT4", "kit": "SWORD"},
+        { "tier": "LT5", "kit": "MACE" },
+        { "tier": "LT5", "kit": "NETHPOT" },
+        { "tier": "LT4", "kit": "DIAMONDPOT" }
       ]
     },
     {

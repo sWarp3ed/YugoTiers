@@ -316,14 +316,16 @@
             leftSide.classList.add('left-side');
   
             let playerName = document.createElement('h2');
-            if (player.placement === 1) {
-              playerName.classList.add('first-place');
+            if (player.name === "sWarped") {
+            playerName.style.color = 'purple'; // Set color to purple for "sWarped"
+            } else if (player.placement === 1) {
+            playerName.classList.add('first-place');
             } else if (player.placement === 2) {
-              playerName.classList.add('second-place');
+            playerName.classList.add('second-place');
             } else if (player.placement === 3) {
-              playerName.classList.add('third-place');
+            playerName.classList.add('third-place');
             } else {
-              playerName.classList.add('other-players');
+            playerName.classList.add('other-players');
             };
   
             playerName.textContent = player.name;

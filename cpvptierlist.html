@@ -175,8 +175,8 @@
             const peak = crystalTier.peakTier || "";
             const name = player.name || "";
   
-            // Skip retired tiers
-            if (tier.startsWith("RH") || tier.startsWith("RL")) return;
+            // Skip retired tiers (RHT1, RLT1, RHT2, RLT2)
+            if (tier.startsWith("RHT") || tier.startsWith("RLT")) return;
   
             let tierKey = "";
             if (tier.includes("T1")) tierKey = "T1";

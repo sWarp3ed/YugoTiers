@@ -244,183 +244,174 @@
 </div>
 
   <div id="player-list"></div>
-
+  
   <script>
-    const tierPoints = {
-      HT1: 60, LT1: 44, HT2: 28, LT2: 16,
-      HT3: 10, LT3: 6, HT4: 4, LT4: 3,
-      HT5: 2, LT5: 1,
-      RHT1: 60, RLT1: 44, RHT2: 28, RLT2: 16,
-      RHT3: 10, RLT3: 6, RHT4: 4, RLT4: 3,
-      RHT5: 2, RLT5: 1,
-    };
+  const tierPoints = {
+    HT1: 60, LT1: 44, HT2: 28, LT2: 16,
+    HT3: 10, LT3: 6, HT4: 4, LT4: 3,
+    HT5: 2, LT5: 1,
+    RHT1: 60, RLT1: 44, RHT2: 28, RLT2: 16,
+    RHT3: 10, RLT3: 6, RHT4: 4, RLT4: 3,
+    RHT5: 2, RLT5: 1,
+  };
   
-    const iconURLs = {
-      SWORD: 'https://mctiers.com/tier_icons/sword.svg',
-      AXE: 'https://mctiers.com/tier_icons/axe.svg',
-      MACE: 'https://mctiers.com/tier_icons/mace.svg',
-      SERB: 'https://images.emojiterra.com/twitter/v14.0/128px/1f1f7-1f1f8.png',
-      CRYSTALS: 'https://mctiers.com/tier_icons/vanilla.svg',
-      NETHPOT: 'https://mctiers.com/tier_icons/nethop.svg',
-      DIAMONDPOT: 'https://mctiers.com/tier_icons/pot.svg',
-      UHC: 'https://mctiers.com/tier_icons/uhc.svg',
-      SMP: 'https://mctiers.com/tier_icons/smp.svg',
-
-      // Add more kits and their corresponding icon URLs here
-    };
+  const iconURLs = {
+    SWORD: 'https://mctiers.com/tier_icons/sword.svg',
+    AXE: 'https://mctiers.com/tier_icons/axe.svg',
+    MACE: 'https://mctiers.com/tier_icons/mace.svg',
+    SERB: 'https://images.emojiterra.com/twitter/v14.0/128px/1f1f7-1f1f8.png',
+    CRYSTALS: 'https://mctiers.com/tier_icons/vanilla.svg',
+    NETHPOT: 'https://mctiers.com/tier_icons/nethop.svg',
+    DIAMONDPOT: 'https://mctiers.com/tier_icons/pot.svg',
+    UHC: 'https://mctiers.com/tier_icons/uhc.svg',
+    SMP: 'https://mctiers.com/tier_icons/smp.svg',
+  };
   
-    let topPlayers = [];  // Store the top 10 players
+  let topPlayers = [];
   
-    // Fetch player data and handle sorting, storing top 10
-    fetch('players.json')
+  fetch('/players.json')
     .then(response => response.json())
     .then(data => {
       const players = data;
-      const topPlayers = players.slice(0, 10); // Adjust sorting if needed
-      const playerList = document.getElementById('player-list');
   
-    // Sort players based on their total points (highest first)
-    players.sort((a, b) => {
-      const calculateTotalPoints = (player) => {
-        let totalPoints = 0;
-        player.tiers.forEach(tier => {
-          const current = tier.tier;
-          const peak = tier.peakTier;
-          const usedTier = peak || current;
-          totalPoints += tierPoints[usedTier] || 0;
+      // Sort players based on total points
+      players.sort((a, b) => {
+        const calculateTotalPoints = (player) => {
+          let totalPoints = 0;
+          player.tiers.forEach(tier => {
+            const current = tier.tier;
+            const peak = tier.peakTier;
+            const usedTier = peak || current;
+            totalPoints += tierPoints[usedTier] || 0;
+          });
+          return totalPoints;
+        };
+  
+        const totalPointsA = calculateTotalPoints(a);
+        const totalPointsB = calculateTotalPoints(b);
+  
+        return totalPointsB - totalPointsA;
+      });
+  
+      // After sorting, assign placements based on the sorted order
+      players.forEach((player, index) => {
+        player.placement = index + 1;
+      });
+  
+      topPlayers = players.slice(0, 10);
+  
+      // Function to render players
+      const renderPlayers = (playersToRender) => {
+        const playerList = document.getElementById('player-list');
+        playerList.innerHTML = ''; // Clear current player list
+  
+        playersToRender.forEach((player) => {
+          let playerDiv = document.createElement('div');
+          playerDiv.classList.add('player-link');
+  
+          let playerBox = document.createElement('div');
+          playerBox.classList.add('player');
+  
+          let leftSide = document.createElement('div');
+          leftSide.classList.add('left-side');
+  
+          let playerName = document.createElement('h2');
+          if (player.placement === 1) {
+            playerName.classList.add('first-place');
+          } else if (player.placement === 2) {
+            playerName.classList.add('second-place');
+          } else if (player.placement === 3) {
+            playerName.classList.add('third-place');
+          } else {
+            playerName.classList.add('other-players');
+          }
+  
+          playerName.textContent = player.name;
+          leftSide.appendChild(playerName);
+  
+          player.tiers.sort((a, b) => {
+            const tierOrder = {
+              'HT1': 1, 'LT1': 2, 'HT2': 3, 'LT2': 4,
+              'HT3': 5, 'LT3': 6, 'HT4': 7, 'LT4': 8,
+              'HT5': 9, 'LT5': 10
+            };
+            const isRetired = (tier) => tier.startsWith("RLT") || tier.startsWith("RHT");
+            if (isRetired(a.tier) && !isRetired(b.tier)) return 1;
+            if (!isRetired(a.tier) && isRetired(b.tier)) return -1;
+            return (tierOrder[a.tier] || 999) - (tierOrder[b.tier] || 999);
+          });
+  
+          let totalPoints = 0;
+          let kitsUsed = new Set();
+  
+          let rightSide = document.createElement('div');
+          rightSide.classList.add('right-side');
+  
+          player.tiers.forEach(tier => {
+            const kit = tier.kit;
+            if (kitsUsed.has(kit)) return;
+            kitsUsed.add(kit);
+  
+            let tierDiv = document.createElement('div');
+            tierDiv.classList.add('tier', tier.tier);
+  
+            let tooltip = document.createElement('div');
+            tooltip.classList.add('tooltip');
+  
+            const current = tier.tier;
+            const peak = tier.peakTier;
+            const usedTier = peak || current;
+            const points = tierPoints[usedTier] || 0;
+            totalPoints += points;
+  
+            tooltip.textContent = `${peak ? "Peak Tier" : "Current Tier"}: ${usedTier} — ${points} points`;
+            tierDiv.appendChild(tooltip);
+  
+            let icon = document.createElement('img');
+            icon.src = iconURLs[kit] || '';
+            icon.alt = `${kit} icon`;
+            tierDiv.appendChild(icon);
+  
+            let tierText = document.createElement('span');
+            tierText.textContent = current;
+            tierDiv.appendChild(tierText);
+  
+            rightSide.appendChild(tierDiv);
+          });
+  
+          let playerInfo = document.createElement('div');
+          playerInfo.classList.add('info');
+          playerInfo.innerHTML = `Placement: #${player.placement || 'N/A'}<br>Points: ${totalPoints}`;
+          leftSide.appendChild(playerInfo);
+  
+          playerBox.appendChild(leftSide);
+          playerBox.appendChild(rightSide);
+          playerDiv.appendChild(playerBox);
+  
+          playerDiv.href = `/player/${player.name.toLowerCase().replace(/\s+/g, '-')}`;
+          playerList.appendChild(playerDiv);
         });
-        return totalPoints;
       };
   
-      const totalPointsA = calculateTotalPoints(a);
-      const totalPointsB = calculateTotalPoints(b);
+      // Initially render top 10 players
+      renderPlayers(topPlayers);
   
-      return totalPointsB - totalPointsA; // Sort by total points in descending order
-    });
+      // Search functionality
+      const searchBar = document.getElementById('search-bar');
+      searchBar.addEventListener('input', () => {
+        const searchQuery = searchBar.value.toLowerCase();
   
-    // After sorting, assign placements based on the sorted order
-    players.forEach((player, index) => {
-      player.placement = index + 1; // Set placement as 1, 2, 3, etc.
-    });
-  
-    // Get the top 10 players (after sorting by points)
-    topPlayers = players.slice(0, 10);  // Store top 10 players
-  
-    // Function to render the top players
-    const renderPlayers = (playersToRender) => {
-      playerList.innerHTML = '';  // Clear current player list
-  
-      playersToRender.forEach((player) => {
-        let playerDiv = document.createElement('div');
-        playerDiv.classList.add('player-link');
-  
-        let playerBox = document.createElement('div');
-        playerBox.classList.add('player');
-  
-        let leftSide = document.createElement('div');
-        leftSide.classList.add('left-side');
-  
-        let playerName = document.createElement('h2');
-        if (player.placement === 1) {
-          playerName.classList.add('first-place');
-        } else if (player.placement === 2) {
-          playerName.classList.add('second-place');
-        } else if (player.placement === 3) {
-          playerName.classList.add('third-place');
+        if (searchQuery === '') {
+          renderPlayers(topPlayers);
         } else {
-          playerName.classList.add('other-players');
+          const filteredPlayers = players.filter(player => 
+            player.name.toLowerCase().includes(searchQuery)
+          );
+          renderPlayers(filteredPlayers);
         }
-  
-        playerName.textContent = player.name;
-        leftSide.appendChild(playerName);
-  
-        player.tiers.sort((a, b) => {
-          const tierOrder = {
-            'HT1': 1, 'LT1': 2, 'HT2': 3, 'LT2': 4,
-            'HT3': 5, 'LT3': 6, 'HT4': 7, 'LT4': 8,
-            'HT5': 9, 'LT5': 10
-          };
-          const isRetired = (tier) => tier.startsWith("RLT") || tier.startsWith("RHT");
-          if (isRetired(a.tier) && !isRetired(b.tier)) return 1;
-          if (!isRetired(a.tier) && isRetired(b.tier)) return -1;
-          return (tierOrder[a.tier] || 999) - (tierOrder[b.tier] || 999);
-        });
-  
-        let totalPoints = 0;
-        let kitsUsed = new Set();
-  
-        let rightSide = document.createElement('div');
-        rightSide.classList.add('right-side');
-  
-        player.tiers.forEach(tier => {
-          const kit = tier.kit;
-          if (kitsUsed.has(kit)) return;
-          kitsUsed.add(kit);
-  
-          let tierDiv = document.createElement('div');
-          tierDiv.classList.add('tier', tier.tier);
-  
-          let tooltip = document.createElement('div');
-          tooltip.classList.add('tooltip');
-  
-          const current = tier.tier;
-          const peak = tier.peakTier;
-          const usedTier = peak || current;
-          const points = tierPoints[usedTier] || 0;
-          totalPoints += points;
-  
-          tooltip.textContent = `${peak ? "Peak Tier" : "Current Tier"}: ${usedTier} — ${points} bodova`;
-          tierDiv.appendChild(tooltip);
-
-          let icon = document.createElement('img');
-          icon.src = iconURLs[kit] || ''; 
-          icon.alt = `${kit} icon`; t
-          tierDiv.appendChild(icon);
-  
-          let tierText = document.createElement('span');
-          tierText.textContent = current;
-          tierDiv.appendChild(tierText);
-  
-          rightSide.appendChild(tierDiv);
-        });
-  
-        let playerInfo = document.createElement('div');
-        playerInfo.classList.add('info');
-        playerInfo.innerHTML = `Mjesto: #${player.placement || 'N/A'}<br>Bodovi: ${totalPoints}`;
-        leftSide.appendChild(playerInfo);
-  
-        playerBox.appendChild(leftSide);
-        playerBox.appendChild(rightSide);
-        playerDiv.appendChild(playerBox);
-  
-        playerDiv.href = `/player/${player.name.toLowerCase().replace(/\s+/g, '-')}`;
-        playerList.appendChild(playerDiv);
       });
-    };
-  
-    // Initially render the top 10 players
-    renderPlayers(topPlayers);
-  
-    // Search functionality
-    const searchBar = document.getElementById('search-bar');
-    searchBar.addEventListener('input', () => {
-      const searchQuery = searchBar.value.toLowerCase();
-  
-      if (searchQuery === '') {
-        // If search bar is empty, show top 10 players
-        renderPlayers(topPlayers);
-      } else {
-        // Filter players based on search query
-        const filteredPlayers = players.filter(player => 
-          player.name.toLowerCase().includes(searchQuery)
-        );
-  
-        // Show filtered players
-        renderPlayers(filteredPlayers);
-      }
-    });
-  })
-  .catch(error => console.error('Error fetching players.json:', error));
+    })
+    .catch(error => console.error('Error fetching players.json:', error));
   </script>  
 </body>
 </html>

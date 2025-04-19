@@ -367,17 +367,9 @@
       ]
     },
     {
-      "name": "",
+      "name": "Chodazalizak",
       "tiers": [
-        { "tier": "", "kit": "SMP" },
-        { "tier": "", "kit": "UHC" },
-        { "tier": "", "kit": "SERB" },
-        { "tier": "", "kit": "SWORD"},
-        { "tier": "", "kit": "AXE" },
-        { "tier": "", "kit": "MACE" },
-        { "tier": "", "kit": "NETHPOT" },
-        { "tier": "", "kit": "DIAMONDPOT" },
-        { "tier": "", "kit": "CRYSTALS" }
+        { "tier": "LT3", "kit": "CRYSTALS" }
       ]
     },
     {

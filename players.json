@@ -160,8 +160,8 @@
         { "tier": "LT3", "kit": "AXE" },
         { "tier": "LT3", "kit": "MACE" },
         { "tier": "LT3", "kit": "NETHPOT" },
-        { "tier": "LT3", "kit": "DIAMONDPOT" },
-        { "tier": "HT5", "kit": "CRYSTALS" }
+        { "tier": "HT3", "kit": "DIAMONDPOT" },
+        { "tier": "LT4", "kit": "CRYSTALS" }
       ]
     },
     {

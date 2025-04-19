@@ -109,7 +109,7 @@
         { "tier": "HT3", "kit": "MACE" },
         { "tier": "LT3", "kit": "NETHPOT" },
         { "tier": "HT3", "kit": "DIAMONDPOT" },
-        { "tier": "HT1", "kit": "CRYSTALS" }
+        { "tier": "LT1", "kit": "CRYSTALS", "peakTier":"HT1" }
       ]
     },
     {
@@ -340,7 +340,7 @@
         { "tier": "LT3", "kit": "MACE" },
         { "tier": "LT3", "kit": "NETHPOT" },
         { "tier": "HT3", "kit": "DIAMONDPOT" },
-        { "tier": "LT1", "kit": "CRYSTALS" }
+        { "tier": "RLT1", "kit": "CRYSTALS" }
       ]
     },
     {

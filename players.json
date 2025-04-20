@@ -445,24 +445,16 @@
       ]
     },
     {
-      "name": "test1",
+      "name": "7xzv",
       "tiers": [
-        { "tier": "LT1", "kit": "SMP" },
-        { "tier": "HT2", "kit": "UHC" }
-      ]
-    },
-    {
-      "name": "",
-      "tiers": [
-        { "tier": "", "kit": "SMP" },
-        { "tier": "", "kit": "UHC" },
-        { "tier": "", "kit": "SERB" },
-        { "tier": "", "kit": "SWORD"},
-        { "tier": "", "kit": "AXE" },
-        { "tier": "", "kit": "MACE" },
-        { "tier": "", "kit": "NETHPOT" },
-        { "tier": "", "kit": "DIAMONDPOT" },
-        { "tier": "", "kit": "CRYSTALS" }
+        { "tier": "LT3", "kit": "SMP" },
+        { "tier": "LT3", "kit": "UHC" },
+        { "tier": "HT4", "kit": "SWORD", "peakTier":"HT3"},
+        { "tier": "LT4", "kit": "AXE" },
+        { "tier": "LT5", "kit": "MACE" },
+        { "tier": "LT4", "kit": "NETHPOT" },
+        { "tier": "HT3", "kit": "DIAMONDPOT" },
+        { "tier": "HT2", "kit": "CRYSTALS" }
       ]
     },
     {

@@ -445,17 +445,12 @@
       ]
     },
     {
-      "name": "",
+      "name": "hunter",
       "tiers": [
-        { "tier": "", "kit": "SMP" },
-        { "tier": "", "kit": "UHC" },
-        { "tier": "", "kit": "SERB" },
-        { "tier": "", "kit": "SWORD"},
-        { "tier": "", "kit": "AXE" },
-        { "tier": "", "kit": "MACE" },
-        { "tier": "", "kit": "NETHPOT" },
-        { "tier": "", "kit": "DIAMONDPOT" },
-        { "tier": "", "kit": "CRYSTALS" }
+        { "tier": "LT3", "kit": "SERB" },
+        { "tier": "HT4", "kit": "SWORD"},
+        { "tier": "LT4", "kit": "NETHPOT" },
+        { "tier": "LT3", "kit": "DIAMONDPOT" }
       ]
     },
     {

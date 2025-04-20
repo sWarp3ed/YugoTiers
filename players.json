@@ -458,17 +458,10 @@
       ]
     },
     {
-      "name": "",
+      "name": "test1",
       "tiers": [
-        { "tier": "", "kit": "SMP" },
-        { "tier": "", "kit": "UHC" },
-        { "tier": "", "kit": "SERB" },
-        { "tier": "", "kit": "SWORD"},
-        { "tier": "", "kit": "AXE" },
-        { "tier": "", "kit": "MACE" },
-        { "tier": "", "kit": "NETHPOT" },
-        { "tier": "", "kit": "DIAMONDPOT" },
-        { "tier": "", "kit": "CRYSTALS" }
+        { "tier": "LT1", "kit": "SMP" },
+        { "tier": "HT2", "kit": "UHC" }
       ]
     },
     {

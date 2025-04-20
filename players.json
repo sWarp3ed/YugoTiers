@@ -327,11 +327,11 @@
         { "tier": "LT3", "kit": "SMP" },
         { "tier": "HT4", "kit": "UHC" },
         { "tier": "LT4", "kit": "SERB" },
-        { "tier": "HT4", "kit": "SWORD","peakTier":"HT3"},
-        { "tier": "HT5", "kit": "AXE","peakTier":"LT4" },
-        { "tier": "LT4", "kit": "NETHPOT","peakTier":"HT4" },
-        { "tier": "LT4", "kit": "DIAMONDPOT","peakTier":"HT4" },
-        { "tier": "HT4", "kit": "CRYSTALS","peakTier":"LT3" }
+        { "tier": "HT4", "kit": "SWORD", "peakTier":"HT3"},
+        { "tier": "HT5", "kit": "AXE", "peakTier":"LT4" },
+        { "tier": "LT4", "kit": "NETHPOT", "peakTier":"HT4" },
+        { "tier": "LT4", "kit": "DIAMONDPOT", "peakTier":"HT4" },
+        { "tier": "HT4", "kit": "CRYSTALS", "peakTier":"LT3" }
       ]
     },
     {

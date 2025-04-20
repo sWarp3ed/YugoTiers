@@ -442,12 +442,6 @@
       ]
     },
     {
-      "name": "Krrlir",
-      "tiers": [
-        { "tier": "HT1", "kit": "CRYSTALS" }
-      ]
-    },
-    {
       "name": "",
       "tiers": [
         { "tier": "", "kit": "SMP" },

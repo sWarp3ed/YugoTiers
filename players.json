@@ -417,6 +417,10 @@
       "name": "N1kola",
       "tiers": [
         { "tier": "LT5", "kit": "DIAMONDPOT" },
+        { "tier": "HT5", "kit": "SWORD"},
+        { "tier": "LT5", "kit": "SMP" },
+        { "tier": "LT5", "kit": "MACE" },
+        { "tier": "LT5", "kit": "AXE" },
         { "tier": "LT5", "kit": "NETHPOT" }
       ]
     },

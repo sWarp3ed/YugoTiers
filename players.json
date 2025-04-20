@@ -386,9 +386,11 @@
     {
       "name": "xDisq",
       "tiers": [
-        { "tier": "LT4", "kit": "SWORD"},
+        { "tier": "HT5", "kit": "SWORD", "peakTier":"LT4"},
         { "tier": "HT5", "kit": "NETHPOT" },
         { "tier": "HT5", "kit": "DIAMONDPOT" },
+        { "tier": "HT5", "kit": "MACE" },
+        { "tier": "LT5", "kit": "AXE" },
         { "tier": "HT5", "kit": "CRYSTALS" }
       ]
     },
@@ -412,8 +414,9 @@
       ]
     },
     {
-      "name": "Nikola011",
+      "name": "N1kola",
       "tiers": [
+        { "tier": "LT5", "kit": "DIAMONDPOT" },
         { "tier": "LT5", "kit": "NETHPOT" }
       ]
     },

@@ -373,17 +373,17 @@
       ]
     },
     {
-      "name": "",
+      "name": "plazxma",
       "tiers": [
-        { "tier": "", "kit": "SMP" },
-        { "tier": "", "kit": "UHC" },
-        { "tier": "", "kit": "SERB" },
-        { "tier": "", "kit": "SWORD"},
-        { "tier": "", "kit": "AXE" },
-        { "tier": "", "kit": "MACE" },
-        { "tier": "", "kit": "NETHPOT" },
-        { "tier": "", "kit": "DIAMONDPOT" },
-        { "tier": "", "kit": "CRYSTALS" }
+        { "tier": "LT4", "kit": "SMP", "peakTier":"HT4" },
+        { "tier": "HT4", "kit": "UHC" },
+        { "tier": "LT3", "kit": "SERB" },
+        { "tier": "LT4", "kit": "SWORD", "peakTier":"LT3"},
+        { "tier": "LT4", "kit": "AXE" },
+        { "tier": "LT5", "kit": "MACE" },
+        { "tier": "LT4", "kit": "NETHPOT" },
+        { "tier": "HT4", "kit": "DIAMONDPOT" },
+        { "tier": "HT5", "kit": "CRYSTALS","peakTier":"LT4" }
       ]
     },
     {

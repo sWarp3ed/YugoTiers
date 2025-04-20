@@ -254,6 +254,7 @@
         { "tier": "HT1", "kit": "SWORD"},
         { "tier": "LT3", "kit": "NETHPOT" },
         { "tier": "LT4", "kit": "UHC" },
+        { "tier": "HT5", "kit": "AXE" },
         { "tier": "HT2", "kit": "DIAMONDPOT" }
       ]
     },
@@ -412,20 +413,6 @@
         { "tier": "LT5", "kit": "MACE" },
         { "tier": "LT5", "kit": "AXE" },
         { "tier": "LT5", "kit": "NETHPOT" }
-      ]
-    },
-    {
-      "name": "KebabOnly",
-      "tiers": [
-        { "tier": "LT3", "kit": "SMP" },
-        { "tier": "HT4", "kit": "UHC" },
-        { "tier": "HT4", "kit": "SERB" },
-        { "tier": "HT4", "kit": "SWORD"},
-        { "tier": "LT4", "kit": "AXE" },
-        { "tier": "HT5", "kit": "MACE" },
-        { "tier": "LT4", "kit": "NETHPOT" },
-        { "tier": "HT4", "kit": "DIAMONDPOT" },
-        { "tier": "LT1", "kit": "CRYSTALS" }
       ]
     },
     {

@@ -119,6 +119,7 @@
         { "tier": "LT1", "kit": "UHC" },
         { "tier": "HT3", "kit": "SWORD", "peakTier": "LT2" },
         { "tier": "LT3", "kit": "AXE" },
+        { "tier": "HT3", "kit": "SERB" },
         { "tier": "LT3", "kit": "NETHPOT", "peakTier": "HT3" },
         { "tier": "HT4", "kit": "DIAMONDPOT", "peakTier": "HT3" }
       ]
@@ -274,8 +275,9 @@
       "tiers": [
         { "tier": "LT3", "kit": "SMP" },
         { "tier": "LT3", "kit": "SERB" },
-        { "tier": "LT1", "kit": "SWORD"},
+        { "tier": "HT1", "kit": "SWORD"},
         { "tier": "LT3", "kit": "NETHPOT" },
+        { "tier": "LT4", "kit": "UHC" },
         { "tier": "HT2", "kit": "DIAMONDPOT" }
       ]
     },
@@ -384,6 +386,385 @@
         { "tier": "LT4", "kit": "NETHPOT" },
         { "tier": "HT4", "kit": "DIAMONDPOT" },
         { "tier": "HT5", "kit": "CRYSTALS","peakTier":"LT4" }
+      ]
+    },
+    {
+      "name": "_hunt3r69",
+      "tiers": [
+        { "tier": "LT3", "kit": "SERB" },
+        { "tier": "HT4", "kit": "SWORD","peakTier":"LT3"},
+        { "tier": "LT4", "kit": "NETHPOT" },
+        { "tier": "HT4", "kit": "DIAMONDPOT" }
+      ]
+    },
+    {
+      "name": "xDisq",
+      "tiers": [
+        { "tier": "LT4", "kit": "SWORD"},
+        { "tier": "HT5", "kit": "NETHPOT" },
+        { "tier": "HT5", "kit": "DIAMONDPOT" },
+        { "tier": "HT5", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "Versility_",
+      "tiers": [
+        { "tier": "LT4", "kit": "SMP" },
+        { "tier": "LT4", "kit": "UHC" },
+        { "tier": "HT4", "kit": "SERB" },
+        { "tier": "LT3", "kit": "SWORD"},
+        { "tier": "HT5", "kit": "AXE" },
+        { "tier": "LT4", "kit": "NETHPOT" },
+        { "tier": "LT3", "kit": "DIAMONDPOT" },
+        { "tier": "HT5", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "Kanii_12",
+      "tiers": [
+        { "tier": "HT4", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "Nikola011",
+      "tiers": [
+        { "tier": "LT5", "kit": "NETHPOT" }
+      ]
+    },
+    {
+      "name": "KebabOnly",
+      "tiers": [
+        { "tier": "LT3", "kit": "SMP" },
+        { "tier": "HT4", "kit": "UHC" },
+        { "tier": "HT4", "kit": "SERB" },
+        { "tier": "HT4", "kit": "SWORD"},
+        { "tier": "LT4", "kit": "AXE" },
+        { "tier": "HT5", "kit": "MACE" },
+        { "tier": "LT4", "kit": "NETHPOT" },
+        { "tier": "HT4", "kit": "DIAMONDPOT" },
+        { "tier": "LT1", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
+      ]
+    },
+    {
+      "name": "",
+      "tiers": [
+        { "tier": "", "kit": "SMP" },
+        { "tier": "", "kit": "UHC" },
+        { "tier": "", "kit": "SERB" },
+        { "tier": "", "kit": "SWORD"},
+        { "tier": "", "kit": "AXE" },
+        { "tier": "", "kit": "MACE" },
+        { "tier": "", "kit": "NETHPOT" },
+        { "tier": "", "kit": "DIAMONDPOT" },
+        { "tier": "", "kit": "CRYSTALS" }
       ]
     },
     {

@@ -371,7 +371,7 @@
         { "tier": "LT3", "kit": "SERB" },
         { "tier": "HT4", "kit": "SWORD","peakTier":"LT3"},
         { "tier": "LT4", "kit": "NETHPOT" },
-        { "tier": "HT4", "kit": "DIAMONDPOT" }
+        { "tier": "LT3", "kit": "DIAMONDPOT" }
       ]
     },
     {
@@ -442,15 +442,6 @@
         { "tier": "LT4", "kit": "NETHPOT" },
         { "tier": "HT3", "kit": "DIAMONDPOT" },
         { "tier": "HT2", "kit": "CRYSTALS" }
-      ]
-    },
-    {
-      "name": "_hunt3r69",
-      "tiers": [
-        { "tier": "LT3", "kit": "SERB" },
-        { "tier": "HT4", "kit": "SWORD"},
-        { "tier": "LT4", "kit": "NETHPOT" },
-        { "tier": "LT3", "kit": "DIAMONDPOT" }
       ]
     },
     {

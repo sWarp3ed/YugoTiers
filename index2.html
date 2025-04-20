@@ -291,6 +291,12 @@
         };
       
         let topPlayers = [];  // Store the top 10 players
+
+        function filterPlayers() {
+      const query = document.getElementById('search-bar').value.toLowerCase();
+      const filteredPlayers = topPlayers.filter(player => player.name.toLowerCase().includes(query));
+      renderPlayers(filteredPlayers);
+    }
       
         // Fetch player data and handle sorting, storing top 10
         fetch('players.json')

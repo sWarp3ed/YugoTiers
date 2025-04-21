@@ -459,12 +459,6 @@
       ]
     },
     {
-      "name": "v4ie",
-      "tiers": [
-        { "tier": "LT3", "kit": "DIAMONDPOT" }
-      ]
-    },
-    {
       "name": "senkavasin",
       "tiers": [
         { "tier": "LT3", "kit": "NETHPOT" },

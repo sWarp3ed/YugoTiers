@@ -390,10 +390,11 @@
       "tiers": [
         { "tier": "LT4", "kit": "SMP" },
         { "tier": "LT4", "kit": "UHC" },
-        { "tier": "HT4", "kit": "SERB" },
+        { "tier": "LT4", "kit": "SERB", "peakTier":"HT4" },
         { "tier": "LT3", "kit": "SWORD"},
         { "tier": "LT4", "kit": "AXE" },
         { "tier": "LT4", "kit": "NETHPOT" },
+        { "tier": "HT5", "kit": "MACE" },
         { "tier": "LT3", "kit": "DIAMONDPOT" },
         { "tier": "HT5", "kit": "CRYSTALS" }
       ]
@@ -472,17 +473,10 @@
       ]
     },
     {
-      "name": "",
+      "name": "PeBlade",
       "tiers": [
-        { "tier": "", "kit": "SMP" },
-        { "tier": "", "kit": "UHC" },
-        { "tier": "", "kit": "SERB" },
-        { "tier": "", "kit": "SWORD"},
-        { "tier": "", "kit": "AXE" },
-        { "tier": "", "kit": "MACE" },
-        { "tier": "", "kit": "NETHPOT" },
-        { "tier": "", "kit": "DIAMONDPOT" },
-        { "tier": "", "kit": "CRYSTALS" }
+        { "tier": "LT3", "kit": "SMP" },
+        { "tier": "HT4", "kit": "SWORD"}
       ]
     },
     {

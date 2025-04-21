@@ -392,7 +392,7 @@
         { "tier": "LT4", "kit": "UHC" },
         { "tier": "HT4", "kit": "SERB" },
         { "tier": "LT3", "kit": "SWORD"},
-        { "tier": "HT5", "kit": "AXE" },
+        { "tier": "LT4", "kit": "AXE" },
         { "tier": "LT4", "kit": "NETHPOT" },
         { "tier": "LT3", "kit": "DIAMONDPOT" },
         { "tier": "HT5", "kit": "CRYSTALS" }
@@ -429,6 +429,7 @@
       "name": "Krrlir",
       "tiers": [
         { "tier": "HT1", "kit": "CRYSTALS" }
+        { "tier": "LT2", "kit": "SWORD"}
       ]
     },
     {
@@ -445,45 +446,29 @@
       ]
     },
     {
-      "name": "",
+      "name": "danilo_2the",
       "tiers": [
-        { "tier": "", "kit": "SMP" },
-        { "tier": "", "kit": "UHC" },
-        { "tier": "", "kit": "SERB" },
-        { "tier": "", "kit": "SWORD"},
-        { "tier": "", "kit": "AXE" },
-        { "tier": "", "kit": "MACE" },
-        { "tier": "", "kit": "NETHPOT" },
-        { "tier": "", "kit": "DIAMONDPOT" },
-        { "tier": "", "kit": "CRYSTALS" }
+        { "tier": "HT4", "kit": "SMP" },
+        { "tier": "HT4", "kit": "UHC" },
+        { "tier": "LT3", "kit": "SERB" },
+        { "tier": "LT3", "kit": "SWORD"},
+        { "tier": "LT4", "kit": "AXE" },
+        { "tier": "HT3", "kit": "MACE" },
+        { "tier": "HT4", "kit": "NETHPOT" },
+        { "tier": "LT3", "kit": "DIAMONDPOT" }
       ]
     },
     {
-      "name": "",
+      "name": "v4ie",
       "tiers": [
-        { "tier": "", "kit": "SMP" },
-        { "tier": "", "kit": "UHC" },
-        { "tier": "", "kit": "SERB" },
-        { "tier": "", "kit": "SWORD"},
-        { "tier": "", "kit": "AXE" },
-        { "tier": "", "kit": "MACE" },
-        { "tier": "", "kit": "NETHPOT" },
-        { "tier": "", "kit": "DIAMONDPOT" },
-        { "tier": "", "kit": "CRYSTALS" }
+        { "tier": "LT3", "kit": "DIAMONDPOT" }
       ]
     },
     {
-      "name": "",
+      "name": "senkavasin",
       "tiers": [
-        { "tier": "", "kit": "SMP" },
-        { "tier": "", "kit": "UHC" },
-        { "tier": "", "kit": "SERB" },
-        { "tier": "", "kit": "SWORD"},
-        { "tier": "", "kit": "AXE" },
-        { "tier": "", "kit": "MACE" },
-        { "tier": "", "kit": "NETHPOT" },
-        { "tier": "", "kit": "DIAMONDPOT" },
-        { "tier": "", "kit": "CRYSTALS" }
+        { "tier": "LT3", "kit": "NETHPOT" },
+        { "tier": "LT3", "kit": "DIAMONDPOT" }
       ]
     },
     {

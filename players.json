@@ -480,17 +480,10 @@
       ]
     },
     {
-      "name": "",
+      "name": "M5tejS",
       "tiers": [
-        { "tier": "", "kit": "SMP" },
-        { "tier": "", "kit": "UHC" },
-        { "tier": "", "kit": "SERB" },
-        { "tier": "", "kit": "SWORD"},
-        { "tier": "", "kit": "AXE" },
-        { "tier": "", "kit": "MACE" },
-        { "tier": "", "kit": "NETHPOT" },
-        { "tier": "", "kit": "DIAMONDPOT" },
-        { "tier": "", "kit": "CRYSTALS" }
+        { "tier": "LT4", "kit": "NETHPOT" },
+        { "tier": "HT4", "kit": "CRYSTALS" }
       ]
     },
     {

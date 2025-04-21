@@ -428,7 +428,7 @@
     {
       "name": "Krrlir",
       "tiers": [
-        { "tier": "HT1", "kit": "CRYSTALS" }
+        { "tier": "HT1", "kit": "CRYSTALS" },
         { "tier": "LT2", "kit": "SWORD"}
       ]
     },

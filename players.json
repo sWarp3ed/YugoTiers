@@ -155,7 +155,7 @@
       "name": "sWarped",
       "tiers": [
         { "tier": "LT3", "kit": "SWORD", "peakTier":"HT3"},
-        { "tier": "LT4", "kit": "AXE" },
+        { "tier": "HT4", "kit": "AXE" },
         { "tier": "HT3", "kit": "UHC" },
         { "tier": "HT5", "kit": "CRYSTALS" },
         { "tier": "LT3", "kit": "DIAMONDPOT" },

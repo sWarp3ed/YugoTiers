@@ -166,7 +166,7 @@
       ]
     },
     {
-      "name": "0_Spider_0",
+      "name": "DizeMiSeNaAnime",
       "tiers": [
         { "tier": "HT3", "kit": "SMP" },
         { "tier": "LT3", "kit": "UHC", "peakTier":"HT3" },
@@ -357,12 +357,12 @@
         { "tier": "LT4", "kit": "SMP", "peakTier":"HT4" },
         { "tier": "HT4", "kit": "UHC" },
         { "tier": "LT3", "kit": "SERB" },
-        { "tier": "LT4", "kit": "SWORD", "peakTier":"LT3"},
-        { "tier": "LT4", "kit": "AXE" },
+        { "tier": "HT4", "kit": "SWORD", "peakTier":"LT3"},
+        { "tier": "HT5", "kit": "AXE", "peakTier": "LT4" },
         { "tier": "LT5", "kit": "MACE" },
         { "tier": "LT4", "kit": "NETHPOT" },
         { "tier": "HT4", "kit": "DIAMONDPOT" },
-        { "tier": "HT5", "kit": "CRYSTALS","peakTier":"LT4" }
+        { "tier": "LT4", "kit": "CRYSTALS" }
       ]
     },
     {
@@ -498,17 +498,12 @@
       ]
     },
     {
-      "name": "",
+      "name": "zStr4ks_",
       "tiers": [
-        { "tier": "", "kit": "SMP" },
-        { "tier": "", "kit": "UHC" },
-        { "tier": "", "kit": "SERB" },
-        { "tier": "", "kit": "SWORD"},
-        { "tier": "", "kit": "AXE" },
-        { "tier": "", "kit": "MACE" },
-        { "tier": "", "kit": "NETHPOT" },
-        { "tier": "", "kit": "DIAMONDPOT" },
-        { "tier": "", "kit": "CRYSTALS" }
+        { "tier": "HT4", "kit": "SMP" },
+        { "tier": "LT3", "kit": "NETHPOT" },
+        { "tier": "HT3", "kit": "DIAMONDPOT" },
+        { "tier": "LT4", "kit": "CRYSTALS" }
       ]
     },
     {

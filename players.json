@@ -432,6 +432,7 @@
         { "tier": "HT1", "kit": "CRYSTALS" },
         { "tier": "LT3", "kit": "NETHPOT" },
         { "tier": "HT3", "kit": "DIAMONDPOT" },
+        { "tier": "LT3", "kit": "AXE" },
         { "tier": "LT2", "kit": "SWORD" }
       ]
     },

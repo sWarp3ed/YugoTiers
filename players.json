@@ -171,7 +171,7 @@
         { "tier": "HT3", "kit": "SMP" },
         { "tier": "LT3", "kit": "UHC", "peakTier":"HT3" },
         { "tier": "LT3", "kit": "SERB" },
-        { "tier": "LT3", "kit": "SWORD", "peakTier": "HT3"},
+        { "tier": "LT2", "kit": "SWORD"},
         { "tier": "HT4", "kit": "MACE" },
         { "tier": "LT3", "kit": "NETHPOT" },
         { "tier": "HT3", "kit": "DIAMONDPOT" },

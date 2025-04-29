@@ -504,7 +504,7 @@
     {
       "name": "zStr4ks_",
       "tiers": [
-        { "tier": "HT4", "kit": "SMP" },
+        { "tier": "LT4", "kit": "SMP" },
         { "tier": "LT3", "kit": "NETHPOT" },
         { "tier": "HT3", "kit": "DIAMONDPOT" },
         { "tier": "LT4", "kit": "CRYSTALS" }

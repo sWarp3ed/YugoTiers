@@ -286,8 +286,8 @@
     {
       "name": "BuddySolz",
       "tiers": [
-        { "tier": "HT5", "kit": "SMP", "peakTier" : "LT4" },
-        { "tier": "LT4", "kit": "UHC", "peakTier": "HT4" },
+        { "tier": "HT5", "kit": "SMP", "peakTier":"LT4" },
+        { "tier": "LT4", "kit": "UHC", "peakTier":"HT4" },
         { "tier": "HT4", "kit": "SERB" },
         { "tier": "LT4", "kit": "SWORD"},
         { "tier": "HT5", "kit": "AXE" },

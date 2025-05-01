@@ -284,17 +284,17 @@
       ]
     },
     {
-      "name": "SpijunirGolubiro",
+      "name": "BuddySolz",
       "tiers": [
-        { "tier": "LT4", "kit": "SMP" },
-        { "tier": "HT4", "kit": "UHC" },
-        { "tier": "HT5", "kit": "SERB" },
+        { "tier": "HT5", "kit": "SMP", "peakTier" : "LT4" },
+        { "tier": "LT4", "kit": "UHC", "peakTier": "HT4" },
+        { "tier": "HT4", "kit": "SERB" },
         { "tier": "LT4", "kit": "SWORD"},
         { "tier": "HT5", "kit": "AXE" },
-        { "tier": "HT5", "kit": "MACE" },
-        { "tier": "HT5", "kit": "NETHPOT" },
+        { "tier": "LT4", "kit": "MACE" },
+        { "tier": "LT4", "kit": "NETHPOT" },
         { "tier": "HT5", "kit": "DIAMONDPOT" },
-        { "tier": "HT5", "kit": "CRYSTALS" }
+        { "tier": "HT4", "kit": "CRYSTALS" }
       ]
     },
     {

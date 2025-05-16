@@ -431,7 +431,7 @@
       "tiers": [
         { "tier": "HT4", "kit": "SMP" },
         { "tier": "HT4", "kit": "UHC" },
-        { "tier": "LT3", "kit": "DIASMP"},
+        { "tier": "LT3", "kit": "SWORD"},
         { "tier": "LT4", "kit": "AXE" },
         { "tier": "HT3", "kit": "MACE" },
         { "tier": "HT4", "kit": "NETHPOT" },
@@ -471,7 +471,7 @@
       "tiers": [
         { "tier": "RHT1", "kit": "SMP" },
         { "tier": "RHT1", "kit": "UHC" },
-        { "tier": "RLT2", "kit": "SWORD"},
+        { "tier": "RLT2", "kit": "DIASMP"},
         { "tier": "RHT2", "kit": "NETHPOT" },
         { "tier": "RHT2", "kit": "DIASMP" },
         { "tier": "RLT2", "kit": "DIAMONDPOT" }

@@ -431,7 +431,7 @@
       "tiers": [
         { "tier": "HT4", "kit": "SMP" },
         { "tier": "HT4", "kit": "UHC" },
-        { "tier": "LT3", "kit": "SWORD"},
+        { "tier": "LT3", "kit": "DIASMP"},
         { "tier": "LT4", "kit": "AXE" },
         { "tier": "HT3", "kit": "MACE" },
         { "tier": "HT4", "kit": "NETHPOT" },

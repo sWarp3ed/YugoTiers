@@ -471,7 +471,7 @@
       "tiers": [
         { "tier": "RHT1", "kit": "SMP" },
         { "tier": "RHT1", "kit": "UHC" },
-        { "tier": "RLT2", "kit": "DIASMP"},
+        { "tier": "RLT2", "kit": "SWORD"},
         { "tier": "RHT2", "kit": "NETHPOT" },
         { "tier": "RHT2", "kit": "DIASMP" },
         { "tier": "RLT2", "kit": "DIAMONDPOT" }

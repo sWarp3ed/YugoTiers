@@ -475,14 +475,5 @@
         { "tier": "RHT2", "kit": "NETHPOT" },
         { "tier": "RLT2", "kit": "DIAMONDPOT" }
       ]
-    },
-    {
-      "name": "zStr4ks_",
-      "tiers": [
-        { "tier": "LT4", "kit": "SMP" },
-        { "tier": "LT3", "kit": "NETHPOT" },
-        { "tier": "HT3", "kit": "DIAMONDPOT" },
-        { "tier": "LT4", "kit": "CRYSTALS" }
-      ]
     }
 ]

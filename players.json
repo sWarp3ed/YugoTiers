@@ -5,6 +5,7 @@
         { "tier": "LT2", "kit": "SMP", "peakTier": "HT1" },
         { "tier": "HT1", "kit": "UHC" },
         { "tier": "LT2", "kit": "SWORD"},
+        { "tier": "HT3", "kit": "DIASMP" },
         { "tier": "LT2", "kit": "AXE" },
         { "tier": "HT3", "kit": "MACE" },
         { "tier": "HT2", "kit": "NETHPOT" },
@@ -31,6 +32,7 @@
         { "tier": "RHT1", "kit": "SMP" },
         { "tier": "RLT2", "kit": "UHC", "peakTier": "RHT2" },
         { "tier": "RHT2", "kit": "SWORD" },
+        { "tier": "HT3", "kit": "DIASMP" },
         { "tier": "RHT1", "kit": "AXE" },
         { "tier": "LT3", "kit": "NETHPOT" },
         { "tier": "RLT2", "kit": "DIAMONDPOT" },
@@ -81,6 +83,7 @@
         { "tier": "LT3", "kit": "SWORD", "peakTier": "HT3" },
         { "tier": "HT1", "kit": "AXE" },
         { "tier": "LT3", "kit": "NETHPOT" },
+        { "tier": "LT3", "kit": "DIASMP" },
         { "tier": "HT3", "kit": "DIAMONDPOT" },
         { "tier": "HT5", "kit": "CRYSTALS" }
       ]
@@ -137,6 +140,7 @@
         { "tier": "HT3", "kit": "SWORD"},
         { "tier": "LT3", "kit": "AXE" },
         { "tier": "LT3", "kit": "MACE" },
+        { "tier": "LT3", "kit": "DIASMP" },
         { "tier": "LT3", "kit": "NETHPOT" },
         { "tier": "HT3", "kit": "DIAMONDPOT" },
         { "tier": "LT4", "kit": "CRYSTALS" }
@@ -147,6 +151,7 @@
       "tiers": [
         { "tier": "LT3", "kit": "SWORD", "peakTier":"HT3"},
         { "tier": "HT4", "kit": "AXE" },
+        { "tier": "LT3", "kit": "DIASMP" },
         { "tier": "HT3", "kit": "UHC" },
         { "tier": "HT5", "kit": "CRYSTALS" },
         { "tier": "LT3", "kit": "DIAMONDPOT" },
@@ -474,7 +479,7 @@
         { "tier": "RHT1", "kit": "UHC" },
         { "tier": "RLT2", "kit": "SWORD"},
         { "tier": "RHT2", "kit": "NETHPOT" },
-        { "tier": "RHT2", "kit": "DIASMP" },
+        { "tier": "HT3", "kit": "DIASMP" },
         { "tier": "RLT2", "kit": "DIAMONDPOT" }
       ]
     }

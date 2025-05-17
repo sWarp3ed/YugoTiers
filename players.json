@@ -341,6 +341,7 @@
         { "tier": "LT5", "kit": "MACE" },
         { "tier": "LT4", "kit": "NETHPOT" },
         { "tier": "HT4", "kit": "DIAMONDPOT" },
+        { "tier": "HT4", "kit": "DIASMP" },
         { "tier": "LT4", "kit": "CRYSTALS" }
       ]
     },

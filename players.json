@@ -103,6 +103,7 @@
         { "tier": "LT2", "kit": "SWORD" },
         { "tier": "LT4", "kit": "AXE" },
         { "tier": "HT3", "kit": "MACE" },
+        { "tier": "LT3", "kit": "DIASMP" },
         { "tier": "LT3", "kit": "NETHPOT" },
         { "tier": "HT3", "kit": "DIAMONDPOT" },
         { "tier": "LT1", "kit": "CRYSTALS", "peakTier":"HT1" }
@@ -168,6 +169,7 @@
         { "tier": "LT2", "kit": "SWORD"},
         { "tier": "LT3", "kit": "AXE" },
         { "tier": "HT4", "kit": "MACE" },
+        { "tier": "LT3", "kit": "DIASMP"},
         { "tier": "LT3", "kit": "NETHPOT" },
         { "tier": "HT3", "kit": "DIAMONDPOT" },
         { "tier": "LT3", "kit": "CRYSTALS", "peakTier": "HT3" }
@@ -503,6 +505,7 @@
         { "tier": "LT3", "kit": "NETHPOT" },
         { "tier": "HT3", "kit": "DIASMP" },
         { "tier": "LT3", "kit": "DIAMONDPOT" },
+        { "tier": "LT4", "kit": "DIASMP" },
         { "tier": "LT4", "kit": "AXE"},
         { "tier": "HT5", "kit": "CRYSTALS"},
         { "tier": "LT3", "kit": "MACE"}

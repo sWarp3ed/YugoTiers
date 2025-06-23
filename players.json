@@ -2,14 +2,14 @@
     {
       "name": "Fowxt",
       "tiers": [
-        { "tier": "LT2", "kit": "SMP", "peakTier": "HT1" },
+        { "tier": "RHT1", "kit": "SMP", "peakTier": "HT1" },
         { "tier": "HT1", "kit": "UHC" },
         { "tier": "LT2", "kit": "SWORD"},
         { "tier": "HT3", "kit": "DIASMP" },
         { "tier": "LT2", "kit": "AXE" },
         { "tier": "HT3", "kit": "MACE" },
         { "tier": "HT2", "kit": "NETHPOT" },
-        { "tier": "RLT1", "kit": "DIAMONDPOT" },
+        { "tier": "LT1", "kit": "DIAMONDPOT" },
         { "tier": "HT3", "kit": "CRYSTALS"}
       ]
     },
@@ -20,7 +20,7 @@
         { "tier": "HT1", "kit": "UHC" },
         { "tier": "HT1", "kit": "SWORD" },
         { "tier": "RLT2", "kit": "AXE"  },
-        { "tier": "LT3", "kit": "NETHPOT" },
+        { "tier": "HT3", "kit": "NETHPOT" },
         { "tier": "LT1", "kit": "DIAMONDPOT" },
         { "tier": "RHT1", "kit": "CRYSTALS" },
         { "tier": "HT5", "kit": "MACE" }
@@ -29,7 +29,7 @@
     {
       "name": "ItsN1ko",
       "tiers": [
-        { "tier": "RHT1", "kit": "SMP" },
+        { "tier": "HT1", "kit": "SMP" },
         { "tier": "RLT2", "kit": "UHC", "peakTier": "RHT2" },
         { "tier": "RHT2", "kit": "SWORD" },
         { "tier": "HT3", "kit": "DIASMP" },
@@ -59,8 +59,8 @@
         { "tier": "RLT2", "kit": "SWORD"},
         { "tier": "LT3", "kit": "AXE" },
         { "tier": "RLT2", "kit": "NETHPOT" },
-        { "tier": "RLT2", "kit": "DIAMONDPOT" },
-        { "tier": "LT1", "kit": "CRYSTALS", "peakTier": "HT1" }
+        { "tier": "LT2", "kit": "DIAMONDPOT" },
+        { "tier": "RHT1", "kit": "CRYSTALS", "peakTier": "HT1" }
       ]
     },
     {
@@ -86,6 +86,7 @@
         { "tier": "LT3", "kit": "DIASMP" },
         { "tier": "HT3", "kit": "DIAMONDPOT" },
         { "tier": "HT5", "kit": "CRYSTALS" }
+        { "tier": "LT4", "kit": "MACE" }
       ]
     },
     {
@@ -123,7 +124,7 @@
     {
       "name": "Zlatana2813",
       "tiers": [
-        { "tier": "HT3", "kit": "SMP", "peakTier": "HT2" },
+        { "tier": "LT2", "kit": "SMP", "peakTier": "HT2" },
         { "tier": "HT3", "kit": "UHC" },
         { "tier": "HT3", "kit": "SWORD"},
         { "tier": "LT3", "kit": "AXE" },

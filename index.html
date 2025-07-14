@@ -366,7 +366,7 @@
     }
 
     // Sort players by total points (descending)
-    player.sort((a, b) => {
+    players.sort((a, b) => {
       const getPoints = (p) => {
         let total = 0;
         (p.tier || []).forEach(t => {

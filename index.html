@@ -353,16 +353,38 @@
   };
 
   async function fetchPlayersFromSupabase() {
-    console.log('Fetching players from Supabase...');
+  const { data: players, error } = await supabase
+    .from('players')
+    .select('*');
 
-    const { data: players, error } = await supabase
-      .from('players')
-      .select('*');
+  if (error) {
+    console.error('Error fetching data:', error);
+    return;
+  }
 
-    if (error) {
-      console.error('Error fetching data:', error);
-      return;
-    }
+  // ✅ ADD THIS LINE TO SEE WHAT'S FETCHED:
+  console.log("Fetched players from Supabase:", players);
+
+  // Continue with sorting...
+  players.sort((a, b) => {
+    const getPoints = (p) => {
+      let total = 0;
+      (p.tier || []).forEach(t => {
+        const usedTier = t.peakTier || t.tier;
+        total += tierPoints[usedTier] || 0;
+      });
+      return total;
+    };
+    return getPoints(b) - getPoints(a);
+  });
+
+  players.forEach((player, index) => {
+    player.placement = index + 1;
+  });
+
+  const topPlayers = players.slice(0, 10);
+  renderPlayers(topPlayers);
+}
 
     // Sort players by their total tier points descending
     players.sort((a, b) => {
@@ -385,7 +407,7 @@
     const topPlayers = players.slice(0, 10);
 
     renderPlayers(topPlayers);
-  }
+  
 
   function renderPlayers(players) {
     const list = document.getElementById('player-list');

@@ -362,21 +362,23 @@
       return;
     }
 
+    // Sort players by their total tier points (descending)
+    players.sort((a, b) => {
+      const getPoints = (p) => {
+        let total = 0;
+        (p.tier || []).forEach(t => {
+          const usedTier = t.peakTier || t.tier;
+          total += tierPoints[usedTier] || 0;
+        });
+        return total;
+      };
+      return getPoints(b) - getPoints(a);
+    });
+
+    // Add placement after sorting
     players.forEach((player, index) => {
       player.placement = index + 1;
     });
-
-    players.sort((a, b) => {
-  const getPoints = (p) => {
-    let total = 0;
-    (p.tier || []).forEach(t => {
-      const usedTier = t.peakTier || t.tier;
-      total += tierPoints[usedTier] || 0;
-    });
-    return total;
-  };
-  return getPoints(b) - getPoints(a);
-});
 
     const topPlayers = players.slice(0, 10);
 
@@ -386,6 +388,7 @@
   function renderPlayers(players) {
     const list = document.getElementById('player-list');
     list.innerHTML = '';
+
     players.forEach(player => {
       const playerDiv = document.createElement('div');
       playerDiv.className = 'player';
@@ -401,26 +404,30 @@
       right.className = 'right-side';
 
       (player.tier || []).forEach(t => {
-  const tierDiv = document.createElement('div');
-  tierDiv.className = `tier ${t.tier}`;
+        const tierDiv = document.createElement('div');
+        tierDiv.className = `tier ${t.tier}`;
 
-  const icon = document.createElement('img');
-  icon.src = iconURLs[t.kit] || '';
-  tierDiv.appendChild(icon);
+        const icon = document.createElement('img');
+        icon.src = iconURLs[t.kit] || '';
+        tierDiv.appendChild(icon);
 
-  const span = document.createElement('span');
-  span.textContent = t.tier;
-  tierDiv.appendChild(span);
+        const span = document.createElement('span');
+        span.textContent = t.tier;
+        tierDiv.appendChild(span);
 
-  if (t.peakTier) {
-    const tooltip = document.createElement('div');
-    tooltip.className = 'tooltip';
-    tooltip.textContent = `Peak: ${t.peakTier}`;
-    tierDiv.appendChild(tooltip);
-  }
+        if (t.peakTier) {
+          const tooltip = document.createElement('div');
+          tooltip.className = 'tooltip';
+          tooltip.textContent = `Peak: ${t.peakTier}`;
+          tierDiv.appendChild(tooltip);
+        }
 
-  right.appendChild(tierDiv);
-});
+        right.appendChild(tierDiv);
+      });
+
+      playerDiv.appendChild(right);
+      list.appendChild(playerDiv); // **IMPORTANT** — append playerDiv to the container
+    });
   }
 
   function filterPlayers() {

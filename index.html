@@ -367,12 +367,16 @@
     });
 
     players.sort((a, b) => {
-      const getPoints = (p) => {
-        const usedTier = p.tier?.peakTier || p.tier?.tierName;
-        return tierPoints[usedTier] || 0;
-      };
-      return getPoints(b) - getPoints(a);
+  const getPoints = (p) => {
+    let total = 0;
+    (p.tier || []).forEach(t => {
+      const usedTier = t.peakTier || t.tier;
+      total += tierPoints[usedTier] || 0;
     });
+    return total;
+  };
+  return getPoints(b) - getPoints(a);
+});
 
     const topPlayers = players.slice(0, 10);
 

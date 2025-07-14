@@ -353,6 +353,7 @@
   };
 
   async function fetchPlayersFromSupabase() {
+    console.log('Fetching players from Supabase...');
     const { data: players, error } = await supabase
       .from('players')
       .select('*');
@@ -361,6 +362,14 @@
       console.error('Error fetching data:', error);
       return;
     }
+
+    if (!players || players.length === 0) {
+      console.log('No players found in database');
+      renderPlayers([]); // Clear list if no players
+      return;
+    }
+
+    console.log('Fetched players:', players);
 
     // Sort players by their total tier points (descending)
     players.sort((a, b) => {
@@ -381,19 +390,16 @@
     });
 
     const topPlayers = players.slice(0, 10);
-
     renderPlayers(topPlayers);
   }
 
   function renderPlayers(players) {
-  const list = document.getElementById('player-list');
-  list.innerHTML = '';
-  players.forEach(player => {
-    const div = document.createElement('div');
-    div.textContent = player.name || 'No name';
-    list.appendChild(div);
-  });
-}
+    const list = document.getElementById('player-list');
+    if (!list) {
+      console.error('No element with id "player-list" found in HTML');
+      return;
+    }
+    list.innerHTML = '';
 
     players.forEach(player => {
       const playerDiv = document.createElement('div');
@@ -432,9 +438,9 @@
       });
 
       playerDiv.appendChild(right);
-      list.appendChild(playerDiv); // **IMPORTANT** — append playerDiv to the container
+      list.appendChild(playerDiv);
     });
-  
+  }
 
   function filterPlayers() {
     const input = document.getElementById('search-bar').value.toLowerCase();
@@ -446,6 +452,7 @@
     });
   }
 
+  // Call fetch on script load
   fetchPlayersFromSupabase();
 </script>
   </body>

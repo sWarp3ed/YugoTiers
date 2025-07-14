@@ -400,31 +400,27 @@
       const right = document.createElement('div');
       right.className = 'right-side';
 
-      if (player.tier) {
-        const tierDiv = document.createElement('div');
-        tierDiv.className = `tier ${player.tier.tierName}`;
+      (player.tier || []).forEach(t => {
+  const tierDiv = document.createElement('div');
+  tierDiv.className = `tier ${t.tier}`;
 
-        const icon = document.createElement('img');
-        icon.src = iconURLs[player.tier.kit] || '';
-        tierDiv.appendChild(icon);
+  const icon = document.createElement('img');
+  icon.src = iconURLs[t.kit] || '';
+  tierDiv.appendChild(icon);
 
-        const span = document.createElement('span');
-        span.textContent = player.tier.tierName;
-        tierDiv.appendChild(span);
+  const span = document.createElement('span');
+  span.textContent = t.tier;
+  tierDiv.appendChild(span);
 
-        if (player.tier.peakTier) {
-          const tooltip = document.createElement('div');
-          tooltip.className = 'tooltip';
-          tooltip.textContent = `Peak: ${player.tier.peakTier}`;
-          tierDiv.appendChild(tooltip);
-        }
+  if (t.peakTier) {
+    const tooltip = document.createElement('div');
+    tooltip.className = 'tooltip';
+    tooltip.textContent = `Peak: ${t.peakTier}`;
+    tierDiv.appendChild(tooltip);
+  }
 
-        right.appendChild(tierDiv);
-      }
-
-      playerDiv.appendChild(right);
-      list.appendChild(playerDiv);
-    });
+  right.appendChild(tierDiv);
+});
   }
 
   function filterPlayers() {

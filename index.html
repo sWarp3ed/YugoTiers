@@ -327,8 +327,8 @@
      <script type="module">
   import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
-  const supabaseUrl = 'https://wcjkvjpmivlrncilypec.supabase.co'
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indjamt2anBtaXZscm5jaWx5cGVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI0ODMwNDQsImV4cCI6MjA2ODA1OTA0NH0.S1Ewd2qBRogG-bUGHKlAmD-UB8ayH5__32JCwWYKD9A'
+  const supabaseUrl = 'https://juozrpoguvfhpvnqgxij.supabase.co'
+  const supabaseKey = 'YOUR_SUPABASE_ANON_KEY'  // Replace with your anon public key here
   const supabase = createClient(supabaseUrl, supabaseKey)
 
   const tierPoints = {
@@ -354,6 +354,7 @@
 
   async function fetchPlayersFromSupabase() {
     console.log('Fetching players from Supabase...');
+
     const { data: players, error } = await supabase
       .from('players')
       .select('*');
@@ -363,15 +364,7 @@
       return;
     }
 
-    if (!players || players.length === 0) {
-      console.log('No players found in database');
-      renderPlayers([]); // Clear list if no players
-      return;
-    }
-
-    console.log('Fetched players:', players);
-
-    // Sort players by their total tier points (descending)
+    // Sort players by their total tier points descending
     players.sort((a, b) => {
       const getPoints = (p) => {
         let total = 0;
@@ -390,17 +383,13 @@
     });
 
     const topPlayers = players.slice(0, 10);
+
     renderPlayers(topPlayers);
   }
 
   function renderPlayers(players) {
     const list = document.getElementById('player-list');
-    if (!list) {
-      console.error('No element with id "player-list" found in HTML');
-      return;
-    }
     list.innerHTML = '';
-
     players.forEach(player => {
       const playerDiv = document.createElement('div');
       playerDiv.className = 'player';
@@ -452,7 +441,6 @@
     });
   }
 
-  // Call fetch on script load
   fetchPlayersFromSupabase();
 </script>
   </body>

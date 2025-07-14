@@ -386,8 +386,14 @@
   }
 
   function renderPlayers(players) {
-    const list = document.getElementById('player-list');
-    list.innerHTML = '';
+  const list = document.getElementById('player-list');
+  list.innerHTML = '';
+  players.forEach(player => {
+    const div = document.createElement('div');
+    div.textContent = player.name || 'No name';
+    list.appendChild(div);
+  });
+}
 
     players.forEach(player => {
       const playerDiv = document.createElement('div');

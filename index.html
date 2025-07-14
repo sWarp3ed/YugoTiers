@@ -353,7 +353,6 @@
   };
 
   async function fetchPlayersFromSupabase() {
-    console.log("Fetching players from Supabase...");
     const { data: players, error } = await supabase.from('players').select('*');
 
     if (error) {
@@ -366,8 +365,7 @@
       return;
     }
 
-    console.log("Fetched players from Supabase:", players);
-
+    // Sort players by total points (descending)
     players.sort((a, b) => {
       const getPoints = (p) => {
         let total = 0;
@@ -380,69 +378,70 @@
       return getPoints(b) - getPoints(a);
     });
 
-    players.forEach((player, index) => {
-      player.placement = index + 1;
-    });
+    const playerListDiv = document.getElementById('player-list');
 
-    const topPlayers = players.slice(0, 10);
-    renderPlayers(topPlayers);
-  }
-
-  function renderPlayers(players) {
-    const list = document.getElementById('player-list');
-    list.innerHTML = '';
-    players.forEach(player => {
+    players.slice(0, 10).forEach((player, index) => {
       const playerDiv = document.createElement('div');
-      playerDiv.className = 'player';
+      playerDiv.classList.add('player');
 
-      const left = document.createElement('div');
-      left.className = 'left-side';
-      const h2 = document.createElement('h2');
-      h2.textContent = `${player.placement}. ${player.name}`;
-      left.appendChild(h2);
-      playerDiv.appendChild(left);
+      const leftSide = document.createElement('div');
+      leftSide.classList.add('left-side');
 
-      const right = document.createElement('div');
-      right.className = 'right-side';
+      const nameHeading = document.createElement('h2');
+      nameHeading.textContent = `${index + 1}. ${player.name}`;
+      leftSide.appendChild(nameHeading);
 
-      (player.tier || []).forEach(t => {
+      const info = document.createElement('p');
+      info.classList.add('info');
+      info.textContent = `Kit: ${player.kit}`;
+      leftSide.appendChild(info);
+
+      const rightSide = document.createElement('div');
+      rightSide.classList.add('right-side');
+
+      (player.tier || []).forEach(tierObj => {
         const tierDiv = document.createElement('div');
-        tierDiv.className = `tier ${t.tier}`;
-
+        tierDiv.classList.add('tier');
+        tierDiv.classList.add(tierObj.tier); // for color
         const icon = document.createElement('img');
-        icon.src = iconURLs[t.kit] || '';
+        icon.src = iconURLs[tierObj.kit] || '';
+        const label = document.createElement('span');
+        label.textContent = tierObj.tier;
+
+        const tooltip = document.createElement('div');
+        tooltip.classList.add('tooltip');
+        tooltip.textContent = `Peak: ${tierObj.peakTier || tierObj.tier}`;
+
         tierDiv.appendChild(icon);
+        tierDiv.appendChild(label);
+        tierDiv.appendChild(tooltip);
 
-        const span = document.createElement('span');
-        span.textContent = t.tier;
-        tierDiv.appendChild(span);
-
-        if (t.peakTier) {
-          const tooltip = document.createElement('div');
-          tooltip.className = 'tooltip';
-          tooltip.textContent = `Peak: ${t.peakTier}`;
-          tierDiv.appendChild(tooltip);
-        }
-
-        right.appendChild(tierDiv);
+        rightSide.appendChild(tierDiv);
       });
 
-      playerDiv.appendChild(right);
-      list.appendChild(playerDiv);
-    });
-  }
+      playerDiv.appendChild(leftSide);
+      playerDiv.appendChild(rightSide);
 
-  function filterPlayers() {
-    const input = document.getElementById('search-bar').value.toLowerCase();
-    const playerDivs = document.querySelectorAll('.player');
-
-    playerDivs.forEach(div => {
-      const name = div.querySelector('.left-side h2').textContent.toLowerCase();
-      div.style.display = name.includes(input) ? 'flex' : 'none';
+      playerListDiv.appendChild(playerDiv);
     });
   }
 
   fetchPlayersFromSupabase();
+
+  // Search bar filtering
+  window.filterPlayers = function () {
+    const input = document.getElementById('search-bar').value.toLowerCase();
+    const players = document.querySelectorAll('.player');
+
+    players.forEach(player => {
+      const name = player.querySelector('.left-side h2').textContent.toLowerCase();
+      if (name.includes(input)) {
+        player.style.display = '';
+      } else {
+        player.style.display = 'none';
+      }
+    });
+  };
 </script>
   </body>
 </html>

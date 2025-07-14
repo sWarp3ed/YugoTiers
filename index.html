@@ -328,8 +328,8 @@
   import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
   const supabaseUrl = 'https://wcjkvjpmivlrncilypec.supabase.co'
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indjamt2anBtaXZscm5jaWx5cGVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI0ODMwNDQsImV4cCI6MjA2ODA1OTA0NH0.S1Ewd2qBRogG-bUGHKlAmD-UB8ayH5__32JCwWYKD9A'  // Replace with your anon public key here
-  const supabase = createClient(supabaseUrl, supabaseKey)
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indjamt2anBtaXZscm5jaWx5cGVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI0ODMwNDQsImV4cCI6MjA2ODA1OTA0NH0.S1Ewd2qBRogG-bUGHKlAmD-UB8ayH5__32JCwWYKD9A';
+  const supabase = createClient(supabaseUrl, supabaseKey);
 
   const tierPoints = {
     HT1: 50, LT1: 40, HT2: 30, LT2: 20,
@@ -353,40 +353,21 @@
   };
 
   async function fetchPlayersFromSupabase() {
-  const { data: players, error } = await supabase
-    .from('players')
-    .select('*');
+    console.log("Fetching players from Supabase...");
+    const { data: players, error } = await supabase.from('players').select('*');
 
-  if (error) {
-    console.error('Error fetching data:', error);
-    return;
-  }
+    if (error) {
+      console.error('Error fetching data:', error);
+      return;
+    }
 
-  // ✅ ADD THIS LINE TO SEE WHAT'S FETCHED:
-  console.log("Fetched players from Supabase:", players);
+    if (!players || players.length === 0) {
+      console.log("No players found in database");
+      return;
+    }
 
-  // Continue with sorting...
-  players.sort((a, b) => {
-    const getPoints = (p) => {
-      let total = 0;
-      (p.tier || []).forEach(t => {
-        const usedTier = t.peakTier || t.tier;
-        total += tierPoints[usedTier] || 0;
-      });
-      return total;
-    };
-    return getPoints(b) - getPoints(a);
-  });
+    console.log("Fetched players from Supabase:", players);
 
-  players.forEach((player, index) => {
-    player.placement = index + 1;
-  });
-
-  const topPlayers = players.slice(0, 10);
-  renderPlayers(topPlayers);
-}
-
-    // Sort players by their total tier points descending
     players.sort((a, b) => {
       const getPoints = (p) => {
         let total = 0;
@@ -399,15 +380,13 @@
       return getPoints(b) - getPoints(a);
     });
 
-    // Add placement after sorting
     players.forEach((player, index) => {
       player.placement = index + 1;
     });
 
     const topPlayers = players.slice(0, 10);
-
     renderPlayers(topPlayers);
-  
+  }
 
   function renderPlayers(players) {
     const list = document.getElementById('player-list');

@@ -363,7 +363,7 @@
 
   // Load players on page load
   fetchPlayers();
-  
+
         const tierPoints = {
           HT1: 60, LT1: 44, HT2: 28, LT2: 16,
           HT3: 10, LT3: 6, HT4: 4, LT4: 3,
@@ -542,24 +542,7 @@
                 renderPlayers(filteredPlayers);
               }
             });
-            const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    databaseURL: "YOUR_DATABASE_URL",  // for Realtime DB
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
-  };
-
-// Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-
-// Initialize database
-const db = firebase.database();  // For Realtime DB
-// OR
-const firestore = firebase.firestore(); // For Firestore
-          });
+          })
       </script> 
   </body>
 </html>

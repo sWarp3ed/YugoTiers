@@ -324,14 +324,46 @@
     <div id="player-list"></div>
     <div><a style="margin-top: 30px;height:40px;font-size: 16px;text-decoration: none;" href="index2.html" class="allpbutton"><strong style="color: rgb(255, 255, 255);">Prikaži sve igrače</strong></a>
     </div>
-    <!-- Firebase App (the core Firebase SDK) -->
-<script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script>
-<!-- Firebase Realtime Database or Firestore -->
-<script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-database.js"></script>
-<!-- or for Firestore -->
-<script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
 
      <script>
+      const firebaseConfig = {
+    apiKey: "AIzaSyDziQ1jdojoUwYDUpGLNfbzMDh5-iB1QIQ",
+    authDomain: "yugotiers-b297d.firebaseapp.com",
+    projectId: "yugotiers-b297d",
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  const playerList = document.getElementById('player-list');
+
+  // Fetch players and render on page
+  async function fetchPlayers() {
+    try {
+      const snapshot = await db.collection('players').get();
+      const players = snapshot.docs.map(doc => doc.data());
+      renderPlayers(players);
+    } catch (error) {
+      console.error('Error fetching players:', error);
+    }
+  }
+
+  function renderPlayers(players) {
+    playerList.innerHTML = ''; // clear old
+
+    players.forEach(p => {
+      const div = document.createElement('div');
+      div.textContent = p.name + (p.kit ? ` [${p.kit}]` : '') + (p.tier ? ` (${p.tier})` : '');
+      playerList.appendChild(div);
+    });
+  }
+
+  // Load players on page load
+  fetchPlayers();
+  
         const tierPoints = {
           HT1: 60, LT1: 44, HT2: 28, LT2: 16,
           HT3: 10, LT3: 6, HT4: 4, LT4: 3,

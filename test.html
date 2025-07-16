@@ -380,58 +380,64 @@ body {
     }
 
     function renderPlayers(players) {
-      playerList.innerHTML = '';
+  playerList.innerHTML = '';
 
-      players.forEach((player, index) => {
-        const div = document.createElement('div');
-        div.className = 'player';
+  players.forEach((player, index) => {
+    const div = document.createElement('div');
+    div.className = 'player';
 
-        // Name placement & color
-        const left = document.createElement('div');
-        left.className = 'left-side';
+    // Left side: name
+    const left = document.createElement('div');
+    left.className = 'left-side';
 
-        const name = document.createElement('h2');
-        name.textContent = `${player.name}`;
-        if (index === 0) name.className = 'first-place';
-        else if (index === 1) name.className = 'second-place';
-        else if (index === 2) name.className = 'third-place';
-        else name.className = 'other-players';
+    const name = document.createElement('h2');
+    name.textContent = `${player.name}`;
+    if (index === 0) name.className = 'first-place';
+    else if (index === 1) name.className = 'second-place';
+    else if (index === 2) name.className = 'third-place';
+    else name.className = 'other-players';
 
-        left.appendChild(name);
+    left.appendChild(name);
 
-        // Right side with tiers
-        const right = document.createElement('div');
-        right.className = 'right-side';
+    // Right side: tiers (even if none)
+    const right = document.createElement('div');
+    right.className = 'right-side';
 
-        if (player.tiers && typeof player.tiers === 'object') {
-          Object.entries(player.tiers).forEach(([kit, tier]) => {
-            const tierDiv = document.createElement('div');
-            tierDiv.className = 'tier ' + tier;
+    if (player.tiers && typeof player.tiers === 'object' && Object.keys(player.tiers).length > 0) {
+      Object.entries(player.tiers).forEach(([kit, tier]) => {
+        const tierDiv = document.createElement('div');
+        tierDiv.className = 'tier ' + tier;
 
-            const img = document.createElement('img');
-            img.src = iconURLs[kit.toUpperCase()] || 'https://mctiers.com/tier_icons/overall.svg';
-            tierDiv.appendChild(img);
+        const img = document.createElement('img');
+        img.src = iconURLs[kit.toUpperCase()] || 'https://mctiers.com/tier_icons/overall.svg';
+        tierDiv.appendChild(img);
 
-            const span = document.createElement('span');
-            span.textContent = tier;
-            tierDiv.appendChild(span);
+        const span = document.createElement('span');
+        span.textContent = tier;
+        tierDiv.appendChild(span);
 
-            if (tier.includes('R')) {
-              const tooltip = document.createElement('div');
-              tooltip.className = 'tooltip';
-              tooltip.textContent = `Retired (${tier})`;
-              tierDiv.appendChild(tooltip);
-            }
-
-            right.appendChild(tierDiv);
-          });
+        if (tier.includes('R')) {
+          const tooltip = document.createElement('div');
+          tooltip.className = 'tooltip';
+          tooltip.textContent = `Retired (${tier})`;
+          tierDiv.appendChild(tooltip);
         }
 
-        div.appendChild(left);
-        div.appendChild(right);
-        playerList.appendChild(div);
+        right.appendChild(tierDiv);
       });
+    } else {
+      // Show empty message or skip if you prefer
+      const noTiers = document.createElement('span');
+      noTiers.textContent = "No tiers";
+      noTiers.style.opacity = "0.5";
+      right.appendChild(noTiers);
     }
+
+    div.appendChild(left);
+    div.appendChild(right);
+    playerList.appendChild(div);
+  });
+}
 
     // Search bar filter
     function filterPlayers() {

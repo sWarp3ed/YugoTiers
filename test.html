@@ -428,84 +428,87 @@
       
             // Function to render the top players
             const renderPlayers = (playersToRender) => {
-              playerList.innerHTML = '';  // Clear current player list
-      
-              playersToRender.forEach((player) => {
-                let playerDiv = document.createElement('div');
-                playerDiv.classList.add('player-link');
-      
-                let playerBox = document.createElement('div');
-                playerBox.classList.add('player');
-      
-                let leftSide = document.createElement('div');
-                leftSide.classList.add('left-side');
-      
-                let playerName = document.createElement('h2');
-                if (player.name === "sWarped") {
-                playerName.style.color = "magenta"; // Set color to purple for "sWarped"
-                } else if (player.placement === 1) {
-                playerName.classList.add('first-place');
-                } else if (player.placement === 2) {
-                playerName.classList.add('second-place');
-                } else if (player.placement === 3) {
-                playerName.classList.add('third-place');
-                } else {
-                playerName.classList.add('other-players');
-                };
-      
-                playerName.textContent = player.name;
-                leftSide.appendChild(playerName);
-      
-                player.tiers.sort((a, b) => {
-                  const tierOrder = {
-                    'HT1': 1, 'LT1': 2, 'HT2': 3, 'LT2': 4,
-                    'HT3': 5, 'LT3': 6, 'HT4': 7, 'LT4': 8,
-                    'HT5': 9, 'LT5': 10
-                  };
-                  const isRetired = (tier) => tier.startsWith("RLT") || tier.startsWith("RHT");
-                  if (isRetired(a.tier) && !isRetired(b.tier)) return 1;
-                  if (!isRetired(a.tier) && isRetired(b.tier)) return -1;
-                  return (tierOrder[a.tier] || 999) - (tierOrder[b.tier] || 999);
-                });
-      
-                let totalPoints = 0;
-                let kitsUsed = new Set();
-      
-                let rightSide = document.createElement('div');
-                rightSide.classList.add('right-side');
-      
-                player.tiers.forEach(tier => {
-                  const kit = tier.kit;
-                  if (kitsUsed.has(kit)) return;
-                  kitsUsed.add(kit);
-      
-                  let tierDiv = document.createElement('div');
-                  tierDiv.classList.add('tier', tier.tier);  // Add tier class dynamically
-      
-                  let tooltip = document.createElement('div');
-                  tooltip.classList.add('tooltip');
-      
-                  const current = tier.tier;
-                  const peak = tier.peakTier;
-                  const usedTier = peak || current;
-                  const points = tierPoints[usedTier] || 0;
-                  totalPoints += points;
-      
-                  tooltip.textContent = `${peak ? "Peak Tier" : "Current Tier"}: ${usedTier} — ${points} bodova`;
-                  tierDiv.appendChild(tooltip);
-      
-                  // Use the icon URL based on the kit
-                  let icon = document.createElement('img');
-                  icon.src = iconURLs[kit] || ''; // Fallback to empty string if kit not found
-                  icon.alt = `${kit} icon`; // Set alt text based on kit
-                  tierDiv.appendChild(icon);
-      
-                  let tierText = document.createElement('span');
-                  tierText.textContent = current;
-                  tierDiv.appendChild(tierText);
-      
-                  rightSide.appendChild(tierDiv);
-                });
+  playerList.innerHTML = '';  // Clear current player list
+
+  playersToRender.forEach((player) => {
+    // Main wrapper for player card (with player CSS class)
+    const playerBox = document.createElement('div');
+    playerBox.classList.add('player');
+
+    // Left side: placement and name
+    const leftSide = document.createElement('div');
+    leftSide.classList.add('left-side');
+
+    // Placement number with special classes for top 3
+    const placement = document.createElement('h2');
+    placement.textContent = player.placement ? player.placement + '.' : '';
+    if (player.placement === 1) placement.classList.add('first-place');
+    else if (player.placement === 2) placement.classList.add('second-place');
+    else if (player.placement === 3) placement.classList.add('third-place');
+    else placement.classList.add('other-players');
+
+    // Player name, color purple if "sWarped"
+    const playerName = document.createElement('h2');
+    playerName.textContent = player.name;
+    if (player.name === "sWarped") playerName.style.color = "magenta";
+    else playerName.style.color = '#fff';
+
+    // Add placement and name to left side
+    leftSide.appendChild(placement);
+    leftSide.appendChild(playerName);
+
+    // Right side: tiers
+    const rightSide = document.createElement('div');
+    rightSide.classList.add('right-side');
+
+    // For each tier, create tier box with icon, tier name and tooltip for peakTier
+    if (player.tiers && player.tiers.length > 0) {
+      player.tiers.forEach(tierObj => {
+        const tierDiv = document.createElement('div');
+        tierDiv.classList.add('tier');
+
+        // Tier color class (use tier code, e.g. HT1, LT2)
+        if (tierObj.tier) {
+          tierDiv.classList.add(tierObj.tier);
+        }
+
+        // Icon for the player's kit
+        const iconImg = document.createElement('img');
+        iconImg.src = iconURLs[player.kit] || '';
+        iconImg.alt = player.kit || 'kit';
+
+        // Tier text below icon
+        const tierSpan = document.createElement('span');
+        tierSpan.textContent = tierObj.tier || '';
+
+        // Tooltip for peakTier if present and different
+        if (tierObj.peakTier && tierObj.peakTier !== tierObj.tier) {
+          const tooltip = document.createElement('div');
+          tooltip.classList.add('tooltip');
+          tooltip.textContent = `Peak: ${tierObj.peakTier}`;
+          tierDiv.appendChild(tooltip);
+        }
+
+        tierDiv.appendChild(iconImg);
+        tierDiv.appendChild(tierSpan);
+        rightSide.appendChild(tierDiv);
+      });
+    }
+
+    // Append left and right side to playerBox
+    playerBox.appendChild(leftSide);
+    playerBox.appendChild(rightSide);
+
+    // Wrap playerBox inside a link wrapper (if needed)
+    const playerLink = document.createElement('a');
+    playerLink.classList.add('player-link');
+    playerLink.href = '#'; // You can update this URL to player's profile if you have it
+    playerLink.appendChild(playerBox);
+
+    // Append to main player list
+    playerList.appendChild(playerLink);
+  });
+};
       
                 let playerInfo = document.createElement('div');
                 playerInfo.classList.add('info');
@@ -519,7 +522,6 @@
                 playerDiv.href = `/player/${player.name.toLowerCase().replace(/\s+/g, '-')}`;
                 playerList.appendChild(playerDiv);
               });
-            };
       
             // Initially render the top 10 players
             renderPlayers(topPlayers);
@@ -542,7 +544,6 @@
                 renderPlayers(filteredPlayers);
               }
             });
-          })
       </script> 
   </body>
 </html>

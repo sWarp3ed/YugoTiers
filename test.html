@@ -390,38 +390,83 @@
         function filterPlayers() {
       const query = document.getElementById('search-bar').value.toLowerCase();
       const filteredPlayers = topPlayers.filter(player => player.name.toLowerCase().includes(query));
-      renderPlayers(filteredPlayers);
-    }
-      
-        // Fetch player data and handle sorting, storing top 10
-        fetch('players.json')
-          .then(response => response.json())
-          .then(players => {
-            const playerList = document.getElementById('player-list');
-      
-            // Sort players based on their total points (highest first)
-            players.sort((a, b) => {
-              const calculateTotalPoints = (player) => {
-                let totalPoints = 0;
-                player.tiers.forEach(tier => {
-                  const current = tier.tier;
-                  const peak = tier.peakTier;
-                  const usedTier = peak || current;
-                  totalPoints += tierPoints[usedTier] || 0;
-                });
-                return totalPoints;
-              };
-      
-              const totalPointsA = calculateTotalPoints(a);
-              const totalPointsB = calculateTotalPoints(b);
-      
-              return totalPointsB - totalPointsA; // Sort by total points in descending order
-            });
-      
-            // After sorting, assign placements based on the sorted order
-            players.forEach((player, index) => {
-              player.placement = index + 1; // Set placement as 1, 2, 3, etc.
-            });
+      function renderPlayers(playersToRender) {
+  playerList.innerHTML = '';  // Clear existing players
+
+  playersToRender.forEach(player => {
+    // Create link wrapper
+    const playerLink = document.createElement('a');
+    playerLink.classList.add('player-link');
+    playerLink.href = `https://someprofilelink.com/${encodeURIComponent(player.name)}`; // Replace with actual profile URL or '#'
+    playerLink.target = "_blank";
+
+    // Create main player div
+    const playerDiv = document.createElement('div');
+    playerDiv.classList.add('player');
+
+    // Left side (placement and name)
+    const leftSide = document.createElement('div');
+    leftSide.classList.add('left-side');
+
+    // Name color based on placement
+    const playerName = document.createElement('h2');
+    playerName.textContent = player.name;
+
+    // Set color class based on placement
+    if (player.placement === 1) playerName.classList.add('first-place');
+    else if (player.placement === 2) playerName.classList.add('second-place');
+    else if (player.placement === 3) playerName.classList.add('third-place');
+    else playerName.classList.add('other-players');
+
+    leftSide.appendChild(playerName);
+
+    // Additional info line (kit and placement)
+    const info = document.createElement('div');
+    info.classList.add('info');
+    info.textContent = `${player.kit || ''} — #${player.placement}`;
+    leftSide.appendChild(info);
+
+    // Right side (tiers)
+    const rightSide = document.createElement('div');
+    rightSide.classList.add('right-side');
+
+    player.tiers.forEach(tierObj => {
+      const tierDiv = document.createElement('div');
+      tierDiv.classList.add('tier');
+
+      // Tier icon (based on kit or tier type)
+      const icon = document.createElement('img');
+      // Use kit icon, fallback to empty or tier icon if needed
+      icon.src = iconURLs[player.kit?.toUpperCase()] || 'https://mctiers.com/tier_icons/vanilla.svg';
+      icon.alt = tierObj.tier;
+      tierDiv.appendChild(icon);
+
+      // Tier label with color class
+      const tierLabel = document.createElement('span');
+      tierLabel.textContent = tierObj.tier;
+
+      // Add tier color class
+      tierLabel.classList.add(tierObj.tier);
+      tierDiv.appendChild(tierLabel);
+
+      // Tooltip for peakTier if exists and different
+      if (tierObj.peakTier && tierObj.peakTier !== tierObj.tier) {
+        const tooltip = document.createElement('div');
+        tooltip.classList.add('tooltip');
+        tooltip.textContent = `Peak: ${tierObj.peakTier}`;
+        tierDiv.appendChild(tooltip);
+      }
+
+      rightSide.appendChild(tierDiv);
+    });
+
+    playerDiv.appendChild(leftSide);
+    playerDiv.appendChild(rightSide);
+
+    playerLink.appendChild(playerDiv);
+    playerList.appendChild(playerLink);
+  });
+}
       
             // Get the top 10 players (after sorting by points)
             topPlayers = players.slice(0, 10);  // Store top 10 players

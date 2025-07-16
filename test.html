@@ -522,28 +522,6 @@
                 playerDiv.href = `/player/${player.name.toLowerCase().replace(/\s+/g, '-')}`;
                 playerList.appendChild(playerDiv);
               });
-      
-            // Initially render the top 10 players
-            renderPlayers(topPlayers);
-      
-            // Search functionality
-            const searchBar = document.getElementById('search-bar');
-            searchBar.addEventListener('input', () => {
-              const searchQuery = searchBar.value.toLowerCase();
-      
-              if (searchQuery === '') {
-                // If search bar is empty, show top 10 players
-                renderPlayers(topPlayers);
-              } else {
-                // Filter players based on search query
-                const filteredPlayers = players.filter(player => 
-                  player.name.toLowerCase().includes(searchQuery)
-                );
-      
-                // Show filtered players
-                renderPlayers(filteredPlayers);
-              }
-            });
       </script> 
   </body>
 </html>

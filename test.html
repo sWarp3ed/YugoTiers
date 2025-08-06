@@ -367,9 +367,9 @@ body {
 
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
-  <script>
+<script>
   const firebaseConfig = {
     apiKey: "AIzaSyDziQ1jdojoUwYDUpGLNfbzMDh5-iB1QIQ",
     authDomain: "yugotiers-b297d.firebaseapp.com",
@@ -381,19 +381,8 @@ body {
 
   const searchBar = document.getElementById('search-bar');
   const playerList = document.getElementById('player-list');
-  const addPlayerButton = document.getElementById('addplayer-button');
-  const modalOverlay = document.getElementById('modal-overlay');
-  const playerNameInput = document.getElementById('player-name-input');
-  const doneButton = document.getElementById('done-button');
-  const cancelButton = document.getElementById('cancel-button');
-  const profile = document.getElementById('player-profile');
-  const profileName = document.getElementById('profile-name');
-  const profileTiers = document.getElementById('profile-tiers');
-  const profileSkin = document.getElementById('profile-skin');
-  const addTierButton = document.getElementById('add-tier-button');
 
-  let selectedPlayerId = null;
-
+  // Icons for kits
   const iconMap = {
     CRYSTALS: 'https://mctiers.com/tier_icons/vanilla.svg',
     NODEBUFF: 'https://mctiers.com/tier_icons/nodebuff.svg',
@@ -407,6 +396,7 @@ body {
 
   function renderPlayers(players) {
     playerList.innerHTML = '';
+
     players.forEach(p => {
       const container = document.createElement('div');
       container.style.display = 'flex';
@@ -415,30 +405,46 @@ body {
       container.style.backgroundColor = '#1f1f1f';
       container.style.padding = '8px';
       container.style.borderRadius = '4px';
+      container.style.marginBottom = '6px';
 
-      const link = document.createElement('div');
-      link.textContent = p.name;
-      link.className = 'player-link';
-      link.style.flex = '1';
-      link.onclick = () => openProfile(p);
+      // Player name
+      const nameDiv = document.createElement('div');
+      nameDiv.textContent = p.name;
+      nameDiv.className = 'player-link';
+      nameDiv.style.flex = '1';
+      // Optionally add a profile open on click here if you want
 
-      const removeBtn = document.createElement('button');
-      removeBtn.textContent = '🗑️';
-      removeBtn.style.marginLeft = '10px';
-      removeBtn.style.backgroundColor = '#cf6679';
-      removeBtn.style.border = 'none';
-      removeBtn.style.borderRadius = '4px';
-      removeBtn.style.color = 'black';
-      removeBtn.style.cursor = 'pointer';
-      removeBtn.style.padding = '4px 8px';
-      removeBtn.title = `Delete ${p.name}`;
-      removeBtn.onclick = (e) => {
-        e.stopPropagation();
-        deletePlayer(p.id, p.name);
-      };
+      // Tiers display (show kit icons and tier text)
+      const tiersDiv = document.createElement('div');
+      tiersDiv.style.display = 'flex';
+      tiersDiv.style.gap = '6px';
+      tiersDiv.style.alignItems = 'center';
 
-      container.appendChild(link);
-      container.appendChild(removeBtn);
+      if (Array.isArray(p.tiers)) {
+        p.tiers.forEach(tierEntry => {
+          const tierContainer = document.createElement('div');
+          tierContainer.style.display = 'flex';
+          tierContainer.style.alignItems = 'center';
+          tierContainer.style.gap = '4px';
+
+          const icon = document.createElement('img');
+          icon.src = iconMap[tierEntry.kit] || '';
+          icon.alt = tierEntry.kit || '';
+          icon.width = 20;
+          icon.height = 20;
+          icon.title = tierEntry.kit || '';
+
+          const tierText = document.createElement('span');
+          tierText.textContent = tierEntry.tier || '';
+
+          tierContainer.appendChild(icon);
+          tierContainer.appendChild(tierText);
+          tiersDiv.appendChild(tierContainer);
+        });
+      }
+
+      container.appendChild(nameDiv);
+      container.appendChild(tiersDiv);
       playerList.appendChild(container);
     });
   }
@@ -453,7 +459,9 @@ body {
     renderPlayers(players);
   }
 
-  
+  searchBar.addEventListener('input', () => refreshPlayers(searchBar.value));
+
+  // Initial load
   refreshPlayers();
 </script>
 </body>

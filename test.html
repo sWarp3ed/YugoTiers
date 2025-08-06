@@ -490,13 +490,14 @@ body {
     profileName.textContent = player.name;
     profileSkin.src = `https://minotar.net/avatar/${player.name}/80`;
     profileTiers.innerHTML = '';
-    player.tiers.forEach(tier => {
-  if (tier.value && tier.value.includes("HT")) {
-    (player.tiers || []).forEach(t => addTierEntry(t.kit, t.tier));
-  }
-});
 
-}
+    (player.tiers || []).forEach(t => {
+      // Support both string-based and object-based tiers
+      const tierValue = typeof t === 'string' ? t : t?.value || '';
+      const kit = typeof t === 'object' ? t.kit || 'CRYSTALS' : 'CRYSTALS';
+      addTierEntry(kit, tierValue);
+    });
+  }
 
   function addTierEntry(kit = 'CRYSTALS', tier = '') {
     const div = document.createElement('div');

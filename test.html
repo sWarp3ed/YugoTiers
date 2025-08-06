@@ -551,7 +551,9 @@ body {
     if (e.key === 'Enter') addPlayer(playerNameInput.value);
   });
 
-  addTierButton?.addEventListener('click', () => addTierEntry());
+  if (addTierButton) {
+  addTierButton.addEventListener('click', () => addTierEntry());
+}
 
   refreshPlayers();
 </script>

@@ -200,79 +200,110 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
   <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyDziQ1jdojoUwYDUpGLNfbzMDh5-iB1QIQ",
-      authDomain: "yugotiers-b297d.firebaseapp.com",
-      projectId: "yugotiers-b297d",
-    };
+  // Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyDziQ1jdojoUwYDUpGLNfbzMDh5-iB1QIQ",
+    authDomain: "yugotiers-b297d.firebaseapp.com",
+    projectId: "yugotiers-b297d",
+  };
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
 
-    const tierBoxes = {
-      T1: document.getElementById("tier1-box"),
-      T2: document.getElementById("tier2-box"),
-      T3: document.getElementById("tier3-box"),
-      T4: document.getElementById("tier4-box"),
-      T5: document.getElementById("tier5-box")
-    };
+  const tierBoxes = {
+    T1: document.getElementById("tier1-box"),
+    T2: document.getElementById("tier2-box"),
+    T3: document.getElementById("tier3-box"),
+    T4: document.getElementById("tier4-box"),
+    T5: document.getElementById("tier5-box"),
+  };
 
-    function clearTierBoxes() {
-      Object.values(tierBoxes).forEach(box => {
-        while (box.children.length > 1) {
-          box.removeChild(box.lastChild);
-        }
-      });
-    }
-
-    function updatePlayers(players) {
-      clearTierBoxes();
-
-      const grouped = { T1: [], T2: [], T3: [], T4: [], T5: [] };
-
-      players.forEach(player => {
-        if (!player.tiers) return;
-        // Find CRYSTALS kit, ignoring case for safety
-        const crystalTier = player.tiers.find(t => t.kit && t.kit.toUpperCase() === "CRYSTALS");
-        if (!crystalTier) return;
-
-        const tier = crystalTier.tier.toUpperCase();
-        if (tier.startsWith("RH") || tier.startsWith("RL")) return;
-
-        const match = tier.match(/\d/);
-        if (!match) return;
-
-        const tierKey = "T" + match[0];
-        if (!grouped[tierKey]) return;
-
-        grouped[tierKey].push({ name: player.name, tier });
-      });
-
-      Object.keys(grouped).forEach(tierKey => {
-        grouped[tierKey].sort((a, b) => {
-          const aIsHT = a.tier.startsWith("HT") ? 0 : 1;
-          const bIsHT = b.tier.startsWith("HT") ? 0 : 1;
-          if (aIsHT !== bIsHT) return aIsHT - bIsHT;
-          return a.name.localeCompare(b.name);
-        });
-
-        grouped[tierKey].forEach(player => {
-          const div = document.createElement("div");
-          div.className = "player-box";
-          if (player.tier.startsWith("HT")) div.classList.add("high-tier");
-          else if (player.tier.startsWith("LT")) div.classList.add("low-tier");
-          div.textContent = player.name;
-          tierBoxes[tierKey].appendChild(div);
-        });
-      });
-    }
-
-    db.collection("players").onSnapshot(snapshot => {
-      const players = [];
-      snapshot.forEach(doc => players.push(doc.data()));
-      updatePlayers(players);
+  function clearTierBoxes() {
+    Object.values(tierBoxes).forEach(box => {
+      // Remove all children except the first (the header div)
+      while (box.children.length > 1) {
+        box.removeChild(box.lastChild);
+      }
     });
-  </script>
+  }
+
+  function updatePlayers(players) {
+    console.log("updatePlayers called with players:", players);
+    clearTierBoxes();
+
+    const grouped = { T1: [], T2: [], T3: [], T4: [], T5: [] };
+
+    players.forEach(player => {
+      if (!player.tiers || !Array.isArray(player.tiers)) {
+        console.warn(`Player ${player.name} has no valid tiers array`);
+        return;
+      }
+      // Find crystal kit tier
+      const crystalTier = player.tiers.find(t => t.kit === "CRYSTALS");
+      if (!crystalTier) {
+        console.warn(`Player ${player.name} has no CRYSTALS tier`);
+        return;
+      }
+      const tier = crystalTier.tier.toUpperCase();
+
+      if (tier.startsWith("RH") || tier.startsWith("RL")) {
+        // Skip these tiers
+        return;
+      }
+
+      const match = tier.match(/\d/);
+      if (!match) {
+        console.warn(`Player ${player.name} tier format invalid: ${tier}`);
+        return;
+      }
+
+      const tierKey = "T" + match[0];
+      if (!grouped[tierKey]) {
+        console.warn(`Tier key ${tierKey} not recognized`);
+        return;
+      }
+
+      grouped[tierKey].push({ name: player.name, tier });
+    });
+
+    // Sort and render players in each tier box
+    Object.keys(grouped).forEach(tierKey => {
+      grouped[tierKey].sort((a, b) => {
+        const aIsHT = a.tier.startsWith("HT") ? 0 : 1;
+        const bIsHT = b.tier.startsWith("HT") ? 0 : 1;
+        if (aIsHT !== bIsHT) return aIsHT - bIsHT;
+        return a.name.localeCompare(b.name);
+      });
+
+      grouped[tierKey].forEach(player => {
+        const div = document.createElement("div");
+        div.className = "player-box";
+        if (player.tier.startsWith("HT")) div.classList.add("high-tier");
+        else if (player.tier.startsWith("LT")) div.classList.add("low-tier");
+        div.textContent = player.name;
+        tierBoxes[tierKey].appendChild(div);
+      });
+    });
+  }
+
+  db.collection("players")
+    .onSnapshot(snapshot => {
+      console.log("Firestore snapshot received");
+      if (snapshot.empty) {
+        console.warn("No player documents found");
+        clearTierBoxes();
+        return;
+      }
+      const players = [];
+      snapshot.forEach(doc => {
+        players.push(doc.data());
+      });
+      updatePlayers(players);
+    }, err => {
+      console.error("Error fetching Firestore data:", err);
+    });
+</script>
 </body>
 </html>
 

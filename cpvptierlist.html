@@ -255,8 +255,9 @@
 
   const tierKey = "T" + match[0];
 
-  grouped[tierKey].push({ name: player.name, tier });
+ 
 });
+
     Object.keys(grouped).forEach(tierKey => {
       grouped[tierKey].sort((a, b) => {
         const aIsHT = a.tier.startsWith("HT") ? 0 : 1;

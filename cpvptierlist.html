@@ -224,6 +224,8 @@
     T5: document.getElementById("tier5-box")
   };
 
+  console.log("Tier boxes:", tierBoxes);
+
   function clearTierBoxes() {
     Object.values(tierBoxes).forEach(box => {
       while (box.children.length > 1) {
@@ -248,11 +250,11 @@
       if (tier.startsWith("RH") || tier.startsWith("RL")) return;
 
       let tierKey = null;
-      if (tier.includes("T1")) tierKey = "T1";
-      else if (tier.includes("T2")) tierKey = "T2";
-      else if (tier.includes("T3")) tierKey = "T3";
-      else if (tier.includes("T4")) tierKey = "T4";
-      else if (tier.includes("T5")) tierKey = "T5";
+      if (tier.includes("1")) tierKey = "T1";
+else if (tier.includes("2")) tierKey = "T2";
+else if (tier.includes("3")) tierKey = "T3";
+else if (tier.includes("4")) tierKey = "T4";
+else if (tier.includes("5")) tierKey = "T5";
       if (!tierKey) return;
 
       grouped[tierKey].push({ name: player.name, tier });

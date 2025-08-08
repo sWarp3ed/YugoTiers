@@ -170,7 +170,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
 <script>
-  // Firebase config
+  // Your Firebase config — replace with your actual config
   const firebaseConfig = {
     apiKey: "AIzaSyDziQ1jdojoUwYDUpGLNfbzMDh5-iB1QIQ",
     authDomain: "yugotiers-b297d.firebaseapp.com",
@@ -180,22 +180,25 @@
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 
-  document.addEventListener("DOMContentLoaded", async () => {
-    try {
-      const snapshot = await db.collection('players').get();
-      const players = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  document.addEventListener("DOMContentLoaded", () => {
+    const tierBoxes = {
+      T1: document.getElementById("tier1-box"),
+      T2: document.getElementById("tier2-box"),
+      T3: document.getElementById("tier3-box"),
+      T4: document.getElementById("tier4-box"),
+      T5: document.getElementById("tier5-box")
+    };
 
-      const tierBoxes = {
-        T1: document.getElementById("tier1-box"),
-        T2: document.getElementById("tier2-box"),
-        T3: document.getElementById("tier3-box"),
-        T4: document.getElementById("tier4-box"),
-        T5: document.getElementById("tier5-box")
-      };
+    function clearTierBoxes() {
+      Object.values(tierBoxes).forEach(box => box.innerHTML = "");
+    }
+
+    function updatePlayers(players) {
+      clearTierBoxes();
 
       const grouped = { T1: [], T2: [], T3: [], T4: [], T5: [] };
 
-      players.forEach((player) => {
+      players.forEach(player => {
         const crystalTier = player.tiers.find(t => t.kit === "CRYSTALS");
         if (!crystalTier) return;
 
@@ -234,10 +237,15 @@
           tierBoxes[tierKey].appendChild(div);
         });
       });
-
-    } catch (err) {
-      console.error("Failed to load players from Firebase:", err);
     }
+
+    // Real-time listener
+    db.collection('players').onSnapshot(snapshot => {
+      const players = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      updatePlayers(players);
+    }, error => {
+      console.error("Error getting players:", error);
+    });
   });
 </script>
 </body>

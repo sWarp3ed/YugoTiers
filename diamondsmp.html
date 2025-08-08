@@ -7,14 +7,15 @@
   <style>
     body {
       background-image: url("icons/thumb-1920-478314.png");
-      background-size: cover;         /* Cover entire screen */
-      background-position: center;    /* Center the image */
-      background-repeat: no-repeat;   /* Don't repeat the image */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       margin: 0; 
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 20px;                     /* Remove default spacing */
-      }
+      padding: 20px;
+      position: relative; /* for absolute positioning children */
+    }
     .kit-selector {
       display: flex;
       justify-content: center;
@@ -27,12 +28,12 @@
       background-color: #4c3e30;
       color: white;
       border: none;
-      padding: 10px 25px;
+      padding: 10px 15px; /* changed width to padding */
       font-size: 1.2em;
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.2s ease;
-      width: 32px;
+      /* width: 32px; removed fixed width */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -42,7 +43,7 @@
       height: 40px;
     }
     .kit-button:hover {
-      background-color: #ffbb33;
+      background-color: #5a3c1f;
       transform: translateY(-15px);
     }
     .kit-button:active {
@@ -103,12 +104,11 @@
       background-color: #3a3a3a;
       color: white;
       padding: 8px 12px;
-      margin: 10px auto;
+      margin: 10px auto 1px auto;
       border-radius: 10px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
       font-size: 16px;
       width: 215px;
-      margin-bottom: 1px;
       text-align: center;
     }
     .high-tier {
@@ -117,125 +117,192 @@
     .low-tier {
       background-color: #363636;
     }
-  .discordlogo {
-         position: absolute;
-         left: 20px;
-         top: 10px;
-         border-radius: 20px;
-         transition: box-shadow 0.15s ease;
-         margin-top: 15px;
-         margin-left: 15px;
-
-      }
-
-      .discordlogo:hover {
-          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.50);
-      }
-
-      .discordlogo:active {
-
-        background-color:rgb(29, 29, 255)
-      }
-      
-    </style>
-  </head>
-  <body>
-    <div><a class="tittle-box"><img src="icons/potencijal4.png" text-allign="center" width="1000" height="160"></a></div>
-    <p><a class="tierlist-tittle"><img src="tierlists/diasmp3.png" text-allign ="center" width="690" height="140"></a></p>
-  <a href="https://discord.gg/U4V4wZKe9U" target="_parent"><img src="icons/discordlogo.jpg" class="discordlogo" width="100" height="100"></a>
+    .discordlogo {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      border-radius: 20px;
+      transition: box-shadow 0.15s ease;
+      cursor: pointer;
+    }
+    .discordlogo:hover {
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.50);
+    }
+    .discordlogo:active {
+      background-color: rgb(29, 29, 255);
+    }
+  </style>
+</head>
+<body>
+  <div class="tittle-box">
+    <img src="icons/potencijal4.png" style="text-align:center;" width="1000" height="160" alt="Potencijal Banner" />
+  </div>
+  <div class="tierlist-tittle">
+    <img src="tierlists/crystal.png" style="text-align:center;" width="800" height="140" alt="Crystal Tierlist" />
+  </div>
+  <a href="https://discord.gg/U4V4wZKe9U" target="_blank" rel="noopener">
+    <img src="icons/discordlogo.jpg" class="discordlogo" width="100" height="100" alt="Discord" />
+  </a>
 
   <div class="kit-selector">
-    <a href="cpvptierlist.html" class="kit-button"><img src="https://mctiers.com/tier_icons/vanilla.svg" width="40" height="40"></a>
-    <a href="axetierlist.html" class="kit-button"><img src="https://mctiers.com/tier_icons/axe.svg" width="40" height="40"></a>
-    <a href="swordtierlist.html" class="kit-button"><img src="https://mctiers.com/tier_icons/sword.svg" width="40" height="40"></a>
-    <a href="uhctierlist.html" class="kit-button"><img src="https://mctiers.com/tier_icons/uhc.svg" width="40" height="40"></a>
-    <a href="smptierlist.html" class="kit-button"><img src="https://mctiers.com/tier_icons/smp.svg" width="40" height="40"></a>
-    <a href="nethpottierlist.html" class="kit-button"><img src="https://mctiers.com/tier_icons/nethop.svg" width="40" height="40"></a>
-    <a href="diapottierlist.html" class="kit-button"><img src="https://mctiers.com/tier_icons/pot.svg" width="40" height="40"></a>
-    <a href="diamondsmp.html" class="kit-button"><img src="https://subtiers.net/assets/dia_smp-523efa38.svg" width="40" height="40"></a>
-    <a href="macetierlist.html" class="kit-button"><img src="https://mctiers.com/tier_icons/mace.svg" width="40" height="40"></a>
-    <a href="index.html" class="kit-button"><img src="https://mctiers.com/tier_icons/overall.svg" width="40" height="40"></a>
+    <a href="cpvptierlist.html" class="kit-button" title="Vanilla">
+      <img src="https://mctiers.com/tier_icons/vanilla.svg" width="40" height="40" alt="Vanilla Kit" />
+    </a>
+    <a href="axetierlist.html" class="kit-button" title="Axe">
+      <img src="https://mctiers.com/tier_icons/axe.svg" width="40" height="40" alt="Axe Kit" />
+    </a>
+    <a href="swordtierlist.html" class="kit-button" title="Sword">
+      <img src="https://mctiers.com/tier_icons/sword.svg" width="40" height="40" alt="Sword Kit" />
+    </a>
+    <a href="uhctierlist.html" class="kit-button" title="UHC">
+      <img src="https://mctiers.com/tier_icons/uhc.svg" width="40" height="40" alt="UHC Kit" />
+    </a>
+    <a href="smptierlist.html" class="kit-button" title="SMP">
+      <img src="https://mctiers.com/tier_icons/smp.svg" width="40" height="40" alt="SMP Kit" />
+    </a>
+    <a href="nethpottierlist.html" class="kit-button" title="Nether Pot">
+      <img src="https://mctiers.com/tier_icons/nethop.svg" width="40" height="40" alt="Nether Pot Kit" />
+    </a>
+    <a href="diapottierlist.html" class="kit-button" title="Diamond Pot">
+      <img src="https://mctiers.com/tier_icons/pot.svg" width="40" height="40" alt="Diamond Pot Kit" />
+    </a>
+    <a href="serbtierlist.html" class="kit-button" title="Serb SMP">
+      <img src="https://subtiers.net/assets/dia_smp-523efa38.svg" width="40" height="40" alt="Serb SMP Kit" />
+    </a>
+    <a href="macetierlist.html" class="kit-button" title="Mace">
+      <img src="https://mctiers.com/tier_icons/mace.svg" width="40" height="40" alt="Mace Kit" />
+    </a>
+    <a href="overall.html" class="kit-button" title="Overall">
+      <img src="https://mctiers.com/tier_icons/overall.svg" width="40" height="40" alt="Overall" />
+    </a>
   </div>
 
   <div class="box-container">
-    <div class="box" id="tier1-box"><div class="boxtier1"><strong>Tier 1</strong></div></div>
-    <div class="box" id="tier2-box"><div class="boxtier2"><strong>Tier 2</strong></div></div>
-    <div class="box" id="tier3-box"><div class="boxtier3"><strong>Tier 3</strong></div></div>
-    <div class="box" id="tier4-box"><div class="box-label"><strong>Tier 4</strong></div></div>
-    <div class="box" id="tier5-box"><div class="box-label"><strong>Tier 5</strong></div></div>
+    <div class="box" id="tier1-box">
+      <div class="boxtier1"><strong>Tier 1</strong></div>
+    </div>
+    <div class="box" id="tier2-box">
+      <div class="boxtier2"><strong>Tier 2</strong></div>
+    </div>
+    <div class="box" id="tier3-box">
+      <div class="boxtier3"><strong>Tier 3</strong></div>
+    </div>
+    <div class="box" id="tier4-box">
+      <div class="box-label"><strong>Tier 4</strong></div>
+    </div>
+    <div class="box" id="tier5-box">
+      <div class="box-label"><strong>Tier 5</strong></div>
+    </div>
   </div>
 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      fetch('players.json')
-        .then(response => response.json())
-        .then(players => {
-          const tierBoxes = {
-            T1: document.getElementById("tier1-box"),
-            T2: document.getElementById("tier2-box"),
-            T3: document.getElementById("tier3-box"),
-            T4: document.getElementById("tier4-box"),
-            T5: document.getElementById("tier5-box")
-          };
-  
-          // Group players by tier
-          const grouped = {
-            T1: [],
-            T2: [],
-            T3: [],
-            T4: [],
-            T5: []
-          };
-  
-          players.forEach((player) => {
-            const crystalTier = player.tiers.find(t => t.kit === "DIASMP");
-            if (!crystalTier) return;
-  
-            const tier = crystalTier.tier.toUpperCase();
-            const peak = crystalTier.peakTier || "";
-            const name = player.name || "";
-  
-            // Skip retired tiers
-            if (tier.startsWith("RH") || tier.startsWith("RL")) return;
-  
-            let tierKey = "";
-            if (tier.includes("T1")) tierKey = "T1";
-            else if (tier.includes("T2")) tierKey = "T2";
-            else if (tier.includes("T3")) tierKey = "T3";
-            else if (tier.includes("T4")) tierKey = "T4";
-            else if (tier.includes("T5")) tierKey = "T5";
-            else return;
-  
-            grouped[tierKey].push({ name, tier, peak });
-          });
-  
-          Object.keys(grouped).forEach(tierKey => {
-            const sorted = grouped[tierKey].sort((a, b) => {
-              // HT goes before LT, then alphabetical
-              const aIsHT = a.tier.startsWith("HT") ? 0 : 1;
-              const bIsHT = b.tier.startsWith("HT") ? 0 : 1;
-              if (aIsHT !== bIsHT) return aIsHT - bIsHT;
-              return a.name.localeCompare(b.name);
-            });
-  
-            sorted.forEach(player => {
-              const div = document.createElement("div");
-              div.className = "player-box";
-              if (player.tier.startsWith("HT")) {
-                div.classList.add("high-tier");
-              } else if (player.tier.startsWith("LT")) {
-                div.classList.add("low-tier");
-              }
-              div.textContent = player.name;
-              if (player.peak) div.title = `Peak Tier: ${player.peak}`;
-              tierBoxes[tierKey].appendChild(div);
-            });
-          });
-        })
-        .catch(err => {
-          console.error("Failed to load players:", err);
-        });
+  // Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyDziQ1jdojoUwYDUpGLNfbzMDh5-iB1QIQ",
+    authDomain: "yugotiers-b297d.firebaseapp.com",
+    projectId: "yugotiers-b297d",
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  const tierBoxes = {
+    T1: document.getElementById("tier1-box"),
+    T2: document.getElementById("tier2-box"),
+    T3: document.getElementById("tier3-box"),
+    T4: document.getElementById("tier4-box"),
+    T5: document.getElementById("tier5-box"),
+  };
+
+  function clearTierBoxes() {
+    Object.values(tierBoxes).forEach(box => {
+      // Remove all children except the first (the header div)
+      while (box.children.length > 1) {
+        box.removeChild(box.lastChild);
+      }
     });
-  </script> 
+  }
+
+  function updatePlayers(players) {
+    console.log("updatePlayers called with players:", players);
+    clearTierBoxes();
+
+    const grouped = { T1: [], T2: [], T3: [], T4: [], T5: [] };
+
+    players.forEach(player => {
+      if (!player.tiers || !Array.isArray(player.tiers)) {
+        console.warn(`Player ${player.name} has no valid tiers array`);
+        return;
+      }
+      // Find crystal kit tier
+      const crystalTier = player.tiers.find(t => t.kit === "DIAMONDSMP");
+      if (!crystalTier) {
+        console.warn(`Player ${player.name} has no CRYSTALS tier`);
+        return;
+      }
+      const tier = crystalTier.tier.toUpperCase();
+
+      if (tier.startsWith("RH") || tier.startsWith("RL")) {
+        // Skip these tiers
+        return;
+      }
+
+      const match = tier.match(/\d/);
+      if (!match) {
+        console.warn(`Player ${player.name} tier format invalid: ${tier}`);
+        return;
+      }
+
+      const tierKey = "T" + match[0];
+      if (!grouped[tierKey]) {
+        console.warn(`Tier key ${tierKey} not recognized`);
+        return;
+      }
+
+      grouped[tierKey].push({ name: player.name, tier });
+    });
+
+    // Sort and render players in each tier box
+    Object.keys(grouped).forEach(tierKey => {
+      grouped[tierKey].sort((a, b) => {
+        const aIsHT = a.tier.startsWith("HT") ? 0 : 1;
+        const bIsHT = b.tier.startsWith("HT") ? 0 : 1;
+        if (aIsHT !== bIsHT) return aIsHT - bIsHT;
+        return a.name.localeCompare(b.name);
+      });
+
+      grouped[tierKey].forEach(player => {
+        const div = document.createElement("div");
+        div.className = "player-box";
+        if (player.tier.startsWith("HT")) div.classList.add("high-tier");
+        else if (player.tier.startsWith("LT")) div.classList.add("low-tier");
+        div.textContent = player.name;
+        tierBoxes[tierKey].appendChild(div);
+      });
+    });
+  }
+
+  db.collection("players")
+    .onSnapshot(snapshot => {
+      console.log("Firestore snapshot received");
+      if (snapshot.empty) {
+        console.warn("No player documents found");
+        clearTierBoxes();
+        return;
+      }
+      const players = [];
+      snapshot.forEach(doc => {
+        players.push(doc.data());
+      });
+      updatePlayers(players);
+    }, err => {
+      console.error("Error fetching Firestore data:", err);
+    });
+</script>
 </body>
 </html>

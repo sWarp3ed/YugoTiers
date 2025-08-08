@@ -14,6 +14,7 @@
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 20px;
+      position: relative; /* for absolute positioning children */
     }
     .kit-selector {
       display: flex;
@@ -27,12 +28,12 @@
       background-color: #4c3e30;
       color: white;
       border: none;
-      padding: 10px 25px;
+      padding: 10px 15px; /* changed width to padding */
       font-size: 1.2em;
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.2s ease;
-      width: 32px;
+      /* width: 32px; removed fixed width */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -103,12 +104,11 @@
       background-color: #3a3a3a;
       color: white;
       padding: 8px 12px;
-      margin: 10px auto;
+      margin: 10px auto 1px auto;
       border-radius: 10px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
       font-size: 16px;
       width: 215px;
-      margin-bottom: 1px;
       text-align: center;
     }
     .high-tier {
@@ -120,11 +120,10 @@
     .discordlogo {
       position: absolute;
       left: 20px;
-      top: 10px;
+      top: 20px;
       border-radius: 20px;
       transition: box-shadow 0.15s ease;
-      margin-top: 15px;
-      margin-left: 15px;
+      cursor: pointer;
     }
     .discordlogo:hover {
       box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.50);
@@ -135,50 +134,46 @@
   </style>
 </head>
 <body>
-  <div>
-    <a class="tittle-box">
-      <img src="icons/potencijal4.png" style="text-align:center;" width="1000" height="160" />
-    </a>
+  <div class="tittle-box">
+    <img src="icons/potencijal4.png" style="text-align:center;" width="1000" height="160" alt="Potencijal Banner" />
   </div>
-  <p>
-    <a class="tierlist-tittle">
-      <img src="tierlists/crystal.png" style="text-align:center;" width="800" height="140" />
-    </a>
-  </p>
-  <a href="https://discord.gg/U4V4wZKe9U" target="_parent">
-    <img src="icons/discordlogo.jpg" class="discordlogo" width="100" height="100" />
+  <div class="tierlist-tittle">
+    <img src="tierlists/crystal.png" style="text-align:center;" width="800" height="140" alt="Crystal Tierlist" />
+  </div>
+  <a href="https://discord.gg/U4V4wZKe9U" target="_blank" rel="noopener">
+    <img src="icons/discordlogo.jpg" class="discordlogo" width="100" height="100" alt="Discord" />
   </a>
 
   <div class="kit-selector">
-    <a href="cpvptierlist.html" class="kit-button">
-      <img src="https://mctiers.com/tier_icons/vanilla.svg" width="40" height="40" />
+    <a href="cpvptierlist.html" class="kit-button" title="Vanilla">
+      <img src="https://mctiers.com/tier_icons/vanilla.svg" width="40" height="40" alt="Vanilla Kit" />
     </a>
-    <a href="axetierlist.html" class="kit-button">
-      <img src="https://mctiers.com/tier_icons/axe.svg" width="40" height="40" />
+    <a href="axetierlist.html" class="kit-button" title="Axe">
+      <img src="https://mctiers.com/tier_icons/axe.svg" width="40" height="40" alt="Axe Kit" />
     </a>
-    <a href="swordtierlist.html" class="kit-button">
-      <img src="https://mctiers.com/tier_icons/sword.svg" width="40" height="40" />
+    <a href="swordtierlist.html" class="kit-button" title="Sword">
+      <img src="https://mctiers.com/tier_icons/sword.svg" width="40" height="40" alt="Sword Kit" />
     </a>
-    <a href="uhctierlist.html" class="kit-button">
-      <img src="https://mctiers.com/tier_icons/uhc.svg" width="40" height="40" />
+    <a href="uhctierlist.html" class="kit-button" title="UHC">
+      <img src="https://mctiers.com/tier_icons/uhc.svg" width="40" height="40" alt="UHC Kit" />
     </a>
-    <a href="smptierlist.html" class="kit-button">
-      <img src="https://mctiers.com/tier_icons/smp.svg" width="40" height="40" />
+    <a href="smptierlist.html" class="kit-button" title="SMP">
+      <img src="https://mctiers.com/tier_icons/smp.svg" width="40" height="40" alt="SMP Kit" />
     </a>
-    <a href="nethpottierlist.html" class="kit-button">
-      <img src="https://mctiers.com/tier_icons/nethop.svg" width="40" height="40" />
+    <a href="nethpottierlist.html" class="kit-button" title="Nether Pot">
+      <img src="https://mctiers.com/tier_icons/nethop.svg" width="40" height="40" alt="Nether Pot Kit" />
     </a>
-    <a href="diapottierlist.html" class="kit-button">
-      <img src="https://mctiers.com/tier_icons/pot.svg" width="40" height="40" />
+    <a href="diapottierlist.html" class="kit-button" title="Diamond Pot">
+      <img src="https://mctiers.com/tier_icons/pot.svg" width="40" height="40" alt="Diamond Pot Kit" />
     </a>
-    <a href="serbtierlist.html" class="kit-button">
-      <img src="https://subtiers.net/assets/dia_smp-523efa38.svg" width="40" height="40" />
+    <a href="serbtierlist.html" class="kit-button" title="Serb SMP">
+      <img src="https://subtiers.net/assets/dia_smp-523efa38.svg" width="40" height="40" alt="Serb SMP Kit" />
     </a>
-    <a href="macetierlist.html" class="kit-button">
-      <img src="https://mctiers.com/tier_icons/mace.svg" width="40" height="40" />
+    <a href="macetierlist.html" class="kit-button" title="Mace">
+      <img src="https://mctiers.com/tier_icons/mace.svg" width="40" height="40" alt="Mace Kit" />
     </a>
-    <a href="index.html" class="kit-button">
-      <img src="https://mctiers.com/tier_icons/overall.svg" width="40" height="40" />
+    <a href="index.html" class="kit-button" title="Overall">
+      <img src="https://mctiers.com/tier_icons/overall.svg" width="40" height="40" alt="Overall" />
     </a>
   </div>
 
@@ -201,93 +196,83 @@
   </div>
 
   <!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
-<script>
-  // Your Firebase config and initialization
-  const firebaseConfig = {
-    apiKey: "AIzaSyDziQ1jdojoUwYDUpGLNfbzMDh5-iB1QIQ",
-    authDomain: "yugotiers-b297d.firebaseapp.com",
-    projectId: "yugotiers-b297d",
-  };
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDziQ1jdojoUwYDUpGLNfbzMDh5-iB1QIQ",
+      authDomain: "yugotiers-b297d.firebaseapp.com",
+      projectId: "yugotiers-b297d",
+    };
 
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
 
-  // Grab tier boxes by their IDs (make sure your HTML has these elements)
-  const tierBoxes = {
-    T1: document.getElementById("tier1-box"),
-    T2: document.getElementById("tier2-box"),
-    T3: document.getElementById("tier3-box"),
-    T4: document.getElementById("tier4-box"),
-    T5: document.getElementById("tier5-box")
-  };
+    const tierBoxes = {
+      T1: document.getElementById("tier1-box"),
+      T2: document.getElementById("tier2-box"),
+      T3: document.getElementById("tier3-box"),
+      T4: document.getElementById("tier4-box"),
+      T5: document.getElementById("tier5-box")
+    };
 
-  console.log("Tier boxes:", tierBoxes);
+    function clearTierBoxes() {
+      Object.values(tierBoxes).forEach(box => {
+        while (box.children.length > 1) {
+          box.removeChild(box.lastChild);
+        }
+      });
+    }
 
-  function clearTierBoxes() {
-    Object.values(tierBoxes).forEach(box => {
-      while (box.children.length > 1) {
-        box.removeChild(box.lastChild);
-      }
-    });
-  }
+    function updatePlayers(players) {
+      clearTierBoxes();
 
-  function updatePlayers(players) {
-    console.log("Updating players:", players);
-    clearTierBoxes();
+      const grouped = { T1: [], T2: [], T3: [], T4: [], T5: [] };
 
-    // Group players by tier key
-    const grouped = { T1: [], T2: [], T3: [], T4: [], T5: [] };
+      players.forEach(player => {
+        if (!player.tiers) return;
+        // Find CRYSTALS kit, ignoring case for safety
+        const crystalTier = player.tiers.find(t => t.kit && t.kit.toUpperCase() === "CRYSTALS");
+        if (!crystalTier) return;
 
-    players.forEach(player => {
-      if (!player.tiers) return;
-      const crystalTier = player.tiers.find(t => t.kit === "CRYSTALS");
-      if (!crystalTier) return;
+        const tier = crystalTier.tier.toUpperCase();
+        if (tier.startsWith("RH") || tier.startsWith("RL")) return;
 
-      const tier = crystalTier.tier.toUpperCase();
+        const match = tier.match(/\d/);
+        if (!match) return;
 
-      if (tier.startsWith("RH") || tier.startsWith("RL")) return;
+        const tierKey = "T" + match[0];
+        if (!grouped[tierKey]) return;
 
-      // Extract tier number from string, e.g. "HT1" -> "1"
-      const match = tier.match(/\d/);
-      if (!match) return;
-
-      const tierKey = "T" + match[0];
-      if (!grouped[tierKey]) return;
-
-      console.log("Assigning player", player.name, "with tier", tier, "to group", tierKey);
-      grouped[tierKey].push({ name: player.name, tier });
-    });
-
-    Object.keys(grouped).forEach(tierKey => {
-      grouped[tierKey].sort((a, b) => {
-        const aIsHT = a.tier.startsWith("HT") ? 0 : 1;
-        const bIsHT = b.tier.startsWith("HT") ? 0 : 1;
-        if (aIsHT !== bIsHT) return aIsHT - bIsHT;
-        return a.name.localeCompare(b.name);
+        grouped[tierKey].push({ name: player.name, tier });
       });
 
-      grouped[tierKey].forEach(player => {
-        const div = document.createElement("div");
-        div.className = "player-box";
-        if (player.tier.startsWith("HT")) div.classList.add("high-tier");
-        else if (player.tier.startsWith("LT")) div.classList.add("low-tier");
-        div.textContent = player.name;
-        tierBoxes[tierKey].appendChild(div);
-      });
-    });
-  }
+      Object.keys(grouped).forEach(tierKey => {
+        grouped[tierKey].sort((a, b) => {
+          const aIsHT = a.tier.startsWith("HT") ? 0 : 1;
+          const bIsHT = b.tier.startsWith("HT") ? 0 : 1;
+          if (aIsHT !== bIsHT) return aIsHT - bIsHT;
+          return a.name.localeCompare(b.name);
+        });
 
-  // Listen for realtime updates from Firestore
-  db.collection("players").onSnapshot(snapshot => {
-    const players = [];
-    snapshot.forEach(doc => players.push(doc.data()));
-    console.log("Players loaded:", players);
-    updatePlayers(players);
-  });
-</script>
+        grouped[tierKey].forEach(player => {
+          const div = document.createElement("div");
+          div.className = "player-box";
+          if (player.tier.startsWith("HT")) div.classList.add("high-tier");
+          else if (player.tier.startsWith("LT")) div.classList.add("low-tier");
+          div.textContent = player.name;
+          tierBoxes[tierKey].appendChild(div);
+        });
+      });
+    }
+
+    db.collection("players").onSnapshot(snapshot => {
+      const players = [];
+      snapshot.forEach(doc => players.push(doc.data()));
+      updatePlayers(players);
+    });
+  </script>
 </body>
 </html>
 

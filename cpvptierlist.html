@@ -266,18 +266,17 @@
   }
 
   db.collection("players").onSnapshot(snapshot => {
-    const players = [];
-    snapshot.forEach(doc => players.push(doc.data()));
-    updatePlayers(players);
-  });
+  const players = [];
+  snapshot.forEach(doc => players.push(doc.data()));
+  console.log("Players loaded:", players);
+  updatePlayers(players);
+});
 
-  searchBar.addEventListener('input', () => refreshPlayers(searchBar.value));
-
-  // Initial load
-  refreshPlayers();
+function updatePlayers(players) {
+  console.log("Updating players:", players);
+  // rest of your code...
+}
 </script>
-
-
 </body>
 </html>
 

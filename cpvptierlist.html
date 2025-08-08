@@ -270,6 +270,11 @@
     snapshot.forEach(doc => players.push(doc.data()));
     updatePlayers(players);
   });
+
+  searchBar.addEventListener('input', () => refreshPlayers(searchBar.value));
+
+  // Initial load
+  refreshPlayers();
 </script>
 
 

@@ -241,25 +241,22 @@
     const grouped = { T1: [], T2: [], T3: [], T4: [], T5: [] };
 
     players.forEach(player => {
-      if (!player.tiers) return;
-      const crystalTier = player.tiers.find(t => t.kit === "CRYSTALS");
-      if (!crystalTier) return;
+  if (!player.tiers) return;
+  const crystalTier = player.tiers.find(t => t.kit === "CRYSTALS");
+  if (!crystalTier) return;
 
-      const tier = crystalTier.tier.toUpperCase();
+  const tier = crystalTier.tier.toUpperCase();
 
-      if (tier.startsWith("RH") || tier.startsWith("RL")) return;
+  if (tier.startsWith("RH") || tier.startsWith("RL")) return;
 
-      let tierKey = null;
-      if (tier.includes("1")) tierKey = "T1";
-else if (tier.includes("2")) tierKey = "T2";
-else if (tier.includes("3")) tierKey = "T3";
-else if (tier.includes("4")) tierKey = "T4";
-else if (tier.includes("5")) tierKey = "T5";
-      if (!tierKey) return;
+  // Extract tier number from string, e.g. "HT1" -> "1"
+  const match = tier.match(/\d/);
+  if (!match) return;
 
-      grouped[tierKey].push({ name: player.name, tier });
-    });
+  const tierKey = "T" + match[0];
 
+  grouped[tierKey].push({ name: player.name, tier });
+});
     Object.keys(grouped).forEach(tierKey => {
       grouped[tierKey].sort((a, b) => {
         const aIsHT = a.tier.startsWith("HT") ? 0 : 1;

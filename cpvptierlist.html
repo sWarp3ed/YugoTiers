@@ -205,86 +205,78 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
   <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyDziQ1jdojoUwYDUpGLNfbzMDh5-iB1QIQ",
-      authDomain: "yugotiers-b297d.firebaseapp.com",
-      projectId: "yugotiers-b297d",
-    };
+  const tierBoxes = {
+    T1: document.getElementById("tier1-box"),
+    T2: document.getElementById("tier2-box"),
+    T3: document.getElementById("tier3-box"),
+    T4: document.getElementById("tier4-box"),
+    T5: document.getElementById("tier5-box")
+  };
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const tierBoxes = {
-        T1: document.getElementById("tier1-box"),
-        T2: document.getElementById("tier2-box"),
-        T3: document.getElementById("tier3-box"),
-        T4: document.getElementById("tier4-box"),
-        T5: document.getElementById("tier5-box")
-      };
-
-      function clearTierBoxes() {
-        Object.values(tierBoxes).forEach(box => {
-          while (box.children.length > 1) {
-            box.removeChild(box.lastChild);
-          }
-        });
+  function clearTierBoxes() {
+    Object.values(tierBoxes).forEach(box => {
+      while (box.children.length > 1) {
+        box.removeChild(box.lastChild);
       }
-
-      function updatePlayers(players) {
-        clearTierBoxes();
-
-        const grouped = { T1: [], T2: [], T3: [], T4: [], T5: [] };
-
-        players.forEach(player => {
-          const crystalTier = player.tiers?.find(t => t.kit === "CRYSTALS");
-          if (!crystalTier) return;
-
-          const tier = crystalTier.tier.toUpperCase();
-          const name = player.name || "";
-
-          if (tier.startsWith("RH") || tier.startsWith("RL")) return;
-
-          let tierKey = "";
-          if (tier.includes("T1")) tierKey = "T1";
-          else if (tier.includes("T2")) tierKey = "T2";
-          else if (tier.includes("T3")) tierKey = "T3";
-          else if (tier.includes("T4")) tierKey = "T4";
-          else if (tier.includes("T5")) tierKey = "T5";
-          else return;
-
-          grouped[tierKey].push({ name, tier });
-        });
-
-        Object.keys(grouped).forEach(tierKey => {
-          const sorted = grouped[tierKey].sort((a, b) => {
-            const aIsHT = a.tier.startsWith("HT") ? 0 : 1;
-            const bIsHT = b.tier.startsWith("HT") ? 0 : 1;
-            if (aIsHT !== bIsHT) return aIsHT - bIsHT;
-            return a.name.localeCompare(b.name);
-          });
-
-          sorted.forEach(player => {
-            const div = document.createElement("div");
-            div.className = "player-box";
-            if (player.tier.startsWith("HT")) div.classList.add("high-tier");
-            else if (player.tier.startsWith("LT")) div.classList.add("low-tier");
-            div.textContent = player.name;
-            tierBoxes[tierKey].appendChild(div);
-          });
-        });
-      }
-
-      db.collection("players").get().then(snapshot => {
-  console.log("Players fetched from Firestore:", snapshot.size);
-  snapshot.forEach(doc => {
-    console.log("Player:", doc.id, doc.data());
-  });
-}).catch(error => {
-  console.error("Error fetching players:", error);
-});
     });
-  </script>
+  }
+
+  function updatePlayers(players) {
+    clearTierBoxes();
+
+    // Group players by tier key
+    const grouped = { T1: [], T2: [], T3: [], T4: [], T5: [] };
+
+    players.forEach(player => {
+      // Check player has tiers array and find "CRYSTALS"
+      if (!player.tiers) return;
+      const crystalTier = player.tiers.find(t => t.kit === "CRYSTALS");
+      if (!crystalTier) return;
+
+      const tier = crystalTier.tier.toUpperCase();
+
+      // Ignore any tiers starting with RH or RL (as you said)
+      if (tier.startsWith("RH") || tier.startsWith("RL")) return;
+
+      // Map to tier group by looking for T1, T2, etc in tier string
+      let tierKey = null;
+      if (tier.includes("T1")) tierKey = "T1";
+      else if (tier.includes("T2")) tierKey = "T2";
+      else if (tier.includes("T3")) tierKey = "T3";
+      else if (tier.includes("T4")) tierKey = "T4";
+      else if (tier.includes("T5")) tierKey = "T5";
+      if (!tierKey) return;
+
+      grouped[tierKey].push({ name: player.name, tier });
+    });
+
+    // Sort players in each tier (HT first then alphabetically)
+    Object.keys(grouped).forEach(tierKey => {
+      grouped[tierKey].sort((a, b) => {
+        const aIsHT = a.tier.startsWith("HT") ? 0 : 1;
+        const bIsHT = b.tier.startsWith("HT") ? 0 : 1;
+        if (aIsHT !== bIsHT) return aIsHT - bIsHT;
+        return a.name.localeCompare(b.name);
+      });
+
+      grouped[tierKey].forEach(player => {
+        const div = document.createElement("div");
+        div.className = "player-box";
+        if (player.tier.startsWith("HT")) div.classList.add("high-tier");
+        else if (player.tier.startsWith("LT")) div.classList.add("low-tier");
+        div.textContent = player.name;
+        tierBoxes[tierKey].appendChild(div);
+      });
+    });
+  }
+
+  // Listen for realtime updates from Firestore
+  db.collection("players").onSnapshot(snapshot => {
+    const players = [];
+    snapshot.forEach(doc => players.push(doc.data()));
+    updatePlayers(players);
+  });
+</script>
 </body>
 </html>
 

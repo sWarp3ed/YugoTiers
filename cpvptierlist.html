@@ -165,10 +165,11 @@
     <div class="box" id="tier5-box"><div class="box-label"><strong>Tier 5</strong></div></div>
   </div>
 
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
-  <script>
+<script>
   // Firebase config
   const firebaseConfig = {
     apiKey: "AIzaSyDziQ1jdojoUwYDUpGLNfbzMDh5-iB1QIQ",
@@ -192,7 +193,6 @@
         T5: document.getElementById("tier5-box")
       };
 
-      // Group players by tier
       const grouped = { T1: [], T2: [], T3: [], T4: [], T5: [] };
 
       players.forEach((player) => {
@@ -203,7 +203,6 @@
         const peak = crystalTier.peakTier || "";
         const name = player.name || "";
 
-        // Skip retired tiers
         if (tier.startsWith("RH") || tier.startsWith("RL")) return;
 
         let tierKey = "";
@@ -217,7 +216,6 @@
         grouped[tierKey].push({ name, tier, peak });
       });
 
-      // Sort and render
       Object.keys(grouped).forEach(tierKey => {
         const sorted = grouped[tierKey].sort((a, b) => {
           const aIsHT = a.tier.startsWith("HT") ? 0 : 1;
@@ -229,11 +227,8 @@
         sorted.forEach(player => {
           const div = document.createElement("div");
           div.className = "player-box";
-          if (player.tier.startsWith("HT")) {
-            div.classList.add("high-tier");
-          } else if (player.tier.startsWith("LT")) {
-            div.classList.add("low-tier");
-          }
+          if (player.tier.startsWith("HT")) div.classList.add("high-tier");
+          else if (player.tier.startsWith("LT")) div.classList.add("low-tier");
           div.textContent = player.name;
           if (player.peak) div.title = `Peak Tier: ${player.peak}`;
           tierBoxes[tierKey].appendChild(div);

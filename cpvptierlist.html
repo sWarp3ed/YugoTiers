@@ -235,28 +235,31 @@
   }
 
   function updatePlayers(players) {
+    console.log("Updating players:", players);
     clearTierBoxes();
 
     // Group players by tier key
     const grouped = { T1: [], T2: [], T3: [], T4: [], T5: [] };
 
     players.forEach(player => {
-  if (!player.tiers) return;
-  const crystalTier = player.tiers.find(t => t.kit === "CRYSTALS");
-  if (!crystalTier) return;
+      if (!player.tiers) return;
+      const crystalTier = player.tiers.find(t => t.kit === "CRYSTALS");
+      if (!crystalTier) return;
 
-  const tier = crystalTier.tier.toUpperCase();
+      const tier = crystalTier.tier.toUpperCase();
 
-  if (tier.startsWith("RH") || tier.startsWith("RL")) return;
+      if (tier.startsWith("RH") || tier.startsWith("RL")) return;
 
-  // Extract tier number from string, e.g. "HT1" -> "1"
-  const match = tier.match(/\d/);
-  if (!match) return;
+      // Extract tier number from string, e.g. "HT1" -> "1"
+      const match = tier.match(/\d/);
+      if (!match) return;
 
-  const tierKey = "T" + match[0];
+      const tierKey = "T" + match[0];
+      if (!grouped[tierKey]) return;
 
- 
-});
+      console.log("Assigning player", player.name, "with tier", tier, "to group", tierKey);
+      grouped[tierKey].push({ name: player.name, tier });
+    });
 
     Object.keys(grouped).forEach(tierKey => {
       grouped[tierKey].sort((a, b) => {
@@ -277,19 +280,14 @@
     });
   }
 
+  // Listen for realtime updates from Firestore
   db.collection("players").onSnapshot(snapshot => {
-  const players = [];
-  snapshot.forEach(doc => players.push(doc.data()));
-  console.log("Players loaded:", players);
-  updatePlayers(players);
-});
-
-function updatePlayers(players) {
-  console.log("Updating players:", players);
-  // rest of your code...
-}
+    const players = [];
+    snapshot.forEach(doc => players.push(doc.data()));
+    console.log("Players loaded:", players);
+    updatePlayers(players);
+  });
 </script>
-
 </body>
 </html>
 

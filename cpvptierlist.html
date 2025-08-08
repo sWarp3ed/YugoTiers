@@ -205,23 +205,12 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
 <script>
-  // Your Firebase config and initialization
-  const firebaseConfig = {
-    apiKey: "AIzaSyDziQ1jdojoUwYDUpGLNfbzMDh5-iB1QIQ",
-    authDomain: "yugotiers-b297d.firebaseapp.com",
-    projectId: "yugotiers-b297d",
-  };
-
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-
-  // Grab tier boxes by their IDs (make sure your HTML has these elements)
   const tierBoxes = {
     T1: document.getElementById("tier1-box"),
     T2: document.getElementById("tier2-box"),
     T3: document.getElementById("tier3-box"),
     T4: document.getElementById("tier4-box"),
-    T5: document.getElementById("tier5-box")
+    T5: document.getElementById("tier5-box"),
   };
 
   function clearTierBoxes() {
@@ -235,7 +224,6 @@
   function updatePlayers(players) {
     clearTierBoxes();
 
-    // Group players by tier key
     const grouped = { T1: [], T2: [], T3: [], T4: [], T5: [] };
 
     players.forEach(player => {
@@ -277,13 +265,13 @@
     });
   }
 
-  // Listen for realtime updates from Firestore and update the UI
   db.collection("players").onSnapshot(snapshot => {
     const players = [];
     snapshot.forEach(doc => players.push(doc.data()));
     updatePlayers(players);
   });
 </script>
+
 
 </body>
 </html>

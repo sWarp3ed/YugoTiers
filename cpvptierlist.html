@@ -205,89 +205,91 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
 <script>
+  // Your Firebase config and initialization
   const firebaseConfig = {
     apiKey: "AIzaSyDziQ1jdojoUwYDUpGLNfbzMDh5-iB1QIQ",
     authDomain: "yugotiers-b297d.firebaseapp.com",
     projectId: "yugotiers-b297d",
   };
-  
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  // Grab tier boxes by their IDs (make sure your HTML has these elements)
   const tierBoxes = {
-  T1: document.getElementById("tier1-box"),
-  T2: document.getElementById("tier2-box"),
-  T3: document.getElementById("tier3-box"),
-  T4: document.getElementById("tier4-box"),
-  T5: document.getElementById("tier5-box"),
-};
+    T1: document.getElementById("tier1-box"),
+    T2: document.getElementById("tier2-box"),
+    T3: document.getElementById("tier3-box"),
+    T4: document.getElementById("tier4-box"),
+    T5: document.getElementById("tier5-box")
+  };
 
-function clearTierBoxes() {
-  Object.values(tierBoxes).forEach(box => {
-    while (box.children.length > 1) {
-      box.removeChild(box.lastChild);
-    }
-  });
-}
+  function clearTierBoxes() {
+    Object.values(tierBoxes).forEach(box => {
+      while (box.children.length > 1) {
+        box.removeChild(box.lastChild);
+      }
+    });
+  }
 
-function updatePlayers(players) {
-  console.log("Updating players:", players);
-  clearTierBoxes();
+  function updatePlayers(players) {
+    clearTierBoxes();
 
-  const grouped = { T1: [], T2: [], T3: [], T4: [], T5: [] };
+    // Group players by tier key
+    const grouped = { T1: [], T2: [], T3: [], T4: [], T5: [] };
 
-  players.forEach(player => {
-    if (!player.tiers) {
-      console.warn("Player missing tiers:", player.name);
-      return;
-    }
-    const crystalTier = player.tiers.find(t => t.kit === "CRYSTALS");
-    if (!crystalTier) {
-      console.warn("Player missing CRYSTALS kit:", player.name);
-      return;
-    }
+    players.forEach(player => {
+      if (!player.tiers) return;
+      const crystalTier = player.tiers.find(t => t.kit === "CRYSTALS");
+      if (!crystalTier) return;
 
-    const tier = crystalTier.tier.toUpperCase();
+      const tier = crystalTier.tier.toUpperCase();
 
-    if (tier.startsWith("RH") || tier.startsWith("RL")) return;
+      if (tier.startsWith("RH") || tier.startsWith("RL")) return;
 
-    let tierKey = null;
-    if (tier.startsWith("HT1") || tier.startsWith("LT1")) tierKey = "T1";
-    else if (tier.startsWith("HT2") || tier.startsWith("LT2")) tierKey = "T2";
-    else if (tier.startsWith("HT3") || tier.startsWith("LT3")) tierKey = "T3";
-    else if (tier.startsWith("HT4") || tier.startsWith("LT4")) tierKey = "T4";
-    else if (tier.startsWith("HT5") || tier.startsWith("LT5")) tierKey = "T5";
-    if (!tierKey) {
-      console.warn("Unmapped tier for player", player.name, tier);
-      return;
-    }
+      let tierKey = null;
+      if (tier.includes("T1")) tierKey = "T1";
+      else if (tier.includes("T2")) tierKey = "T2";
+      else if (tier.includes("T3")) tierKey = "T3";
+      else if (tier.includes("T4")) tierKey = "T4";
+      else if (tier.includes("T5")) tierKey = "T5";
+      if (!tierKey) return;
 
-    grouped[tierKey].push({ name: player.name, tier });
-  });
-
-  Object.keys(grouped).forEach(tierKey => {
-    grouped[tierKey].sort((a, b) => {
-      const aIsHT = a.tier.startsWith("HT") ? 0 : 1;
-      const bIsHT = b.tier.startsWith("HT") ? 0 : 1;
-      if (aIsHT !== bIsHT) return aIsHT - bIsHT;
-      return a.name.localeCompare(b.name);
+      grouped[tierKey].push({ name: player.name, tier });
     });
 
-    grouped[tierKey].forEach(player => {
-      const div = document.createElement("div");
-      div.className = "player-box";
-      if (player.tier.startsWith("HT")) div.classList.add("high-tier");
-      else if (player.tier.startsWith("LT")) div.classList.add("low-tier");
-      div.textContent = player.name;
-      tierBoxes[tierKey].appendChild(div);
-    });
-  });
-}
+    Object.keys(grouped).forEach(tierKey => {
+      grouped[tierKey].sort((a, b) => {
+        const aIsHT = a.tier.startsWith("HT") ? 0 : 1;
+        const bIsHT = b.tier.startsWith("HT") ? 0 : 1;
+        if (aIsHT !== bIsHT) return aIsHT - bIsHT;
+        return a.name.localeCompare(b.name);
+      });
 
-db.collection("players").onSnapshot(snapshot => {
+      grouped[tierKey].forEach(player => {
+        const div = document.createElement("div");
+        div.className = "player-box";
+        if (player.tier.startsWith("HT")) div.classList.add("high-tier");
+        else if (player.tier.startsWith("LT")) div.classList.add("low-tier");
+        div.textContent = player.name;
+        tierBoxes[tierKey].appendChild(div);
+      });
+    });
+  }
+
+  db.collection("players").onSnapshot(snapshot => {
   const players = [];
   snapshot.forEach(doc => players.push(doc.data()));
   console.log("Players loaded:", players);
   updatePlayers(players);
 });
+
+function updatePlayers(players) {
+  console.log("Updating players:", players);
+  // rest of your code...
+}
 </script>
+
 </body>
 </html>
 

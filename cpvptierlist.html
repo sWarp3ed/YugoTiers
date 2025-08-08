@@ -205,7 +205,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
   <script>
-    // Your Firebase config — replace with your actual config
     const firebaseConfig = {
       apiKey: "AIzaSyDziQ1jdojoUwYDUpGLNfbzMDh5-iB1QIQ",
       authDomain: "yugotiers-b297d.firebaseapp.com",
@@ -241,8 +240,7 @@
           const crystalTier = player.tiers?.find(t => t.kit === "CRYSTALS");
           if (!crystalTier) return;
 
-          const tier = (crystalTier.tier || "").toUpperCase();
-          const peak = crystalTier.peakTier || "";
+          const tier = crystalTier.tier.toUpperCase();
           const name = player.name || "";
 
           if (tier.startsWith("RH") || tier.startsWith("RL")) return;
@@ -255,7 +253,7 @@
           else if (tier.includes("T5")) tierKey = "T5";
           else return;
 
-          grouped[tierKey].push({ name, tier, peak });
+          grouped[tierKey].push({ name, tier });
         });
 
         Object.keys(grouped).forEach(tierKey => {
@@ -272,9 +270,6 @@
             if (player.tier.startsWith("HT")) div.classList.add("high-tier");
             else if (player.tier.startsWith("LT")) div.classList.add("low-tier");
             div.textContent = player.name;
-            if (player.peak && player.peak.trim() !== "") {
-              div.title = `Peak Tier: ${player.peak}`;
-            }
             tierBoxes[tierKey].appendChild(div);
           });
         });
